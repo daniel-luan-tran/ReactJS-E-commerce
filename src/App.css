@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  font-family: 'BhuTuka Expanded One', cursive;
+  font-family: 'Bigelow Rules', cursive;
+}
