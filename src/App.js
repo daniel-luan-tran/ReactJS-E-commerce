@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Navigation from './components/navigation/navigation.component';
+import SignIn from './components/sign-in/sign-in.component';
 import HomePage from './pages/homepage/homepage.component';
 
 const Shop = () => {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/" element={<Navigation/>}>
             <Route index element={<HomePage/>} />
             <Route path="shop" element={<Shop/>} />
+            <Route path="sign-in" element={<SignIn/>} />
           </Route>
         </Routes>
       </BrowserRouter>
