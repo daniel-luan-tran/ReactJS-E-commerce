@@ -1,4 +1,6 @@
 import { useState } from "react";
+import {createAuthUserWithEmailAndPassword, createUserDocumentFromAuth} from "../../utils/firebase/firebase.utils"
+import { Input } from "../form-input/form-input.component";
 
 const defaultFormFields = {
     displayname: "",
@@ -8,37 +10,66 @@ const defaultFormFields = {
 }
 
 export const SignUp = () => {
-    const [state, setState] = useState(defaultFormFields); 
-    const {displayname, email, password, confirmPassword} = state;
+    const [state, setStateForFormField] = useState(defaultFormFields); //defaultFormFields set defaulf value cho state => truyền destructure (*) (dòng dưới)
+    const {displayname, email, password, confirmPassword} = state; //(*)
     console.log(state);
     const handleChange = (e) => {
-        debugger
-        const {name, value} = e.target;
-        setState({...state, [name]:value});
+        
+        const {name, value} = e.target; //sự kiên onChange => truyền vào destructure từ name và value của thẻ input
+        
+        setStateForFormField({...state, [name]:value});
+        //[name]:value được xử lý động, nếu nhập vào displayname là Luan => ['displayname']: 'Luan' => truyền vào destructure (*) => defaultFormFields.displayname = value
+
+        //này giống như setState trong kiểu class
+        //defaultFormFields['displayname'] = value;
+        //Kiểu cũ: setState({...state})
     };
+
+    const isPasswordMatched = async (event) => {
+        if (password != confirmPassword)
+            return false;
+        else
+            return true;
+    }
+
+    const handleSubmit = async () => {
+        const isMatch = await isPasswordMatched();
+        if (isMatch) {
+            try {
+                const {user} = await createAuthUserWithEmailAndPassword(email, password);
+                console.log(user);
+                await createUserDocumentFromAuth(user, {displayname});
+            } catch (error) {
+                
+                if (error.code == 'auth/email-already-in-use') {
+                    alert('Email already in use!');
+                }
+                console.log(error);
+            }
+        } else {
+            alert("Confirm password is not matched!");
+        }
+    }
 
     return (
         <div className="signup row justify-content-center pt-3">
             <div className="col-8 p-5 border">
                 <h1>Sign Up</h1>
-                <form method="post" action="https://www.google.com/signup" onSubmit={() => {}}>
+                <form method="post" onSubmit={(event) => {
+                        event.preventDefault(); //Để đảm bảo rằng form chỉ xử lý bằng sự kiện của mình, nếu không có dòng này, form thay vì return nếu password không match thì nó sẽ submit luôn theo mặc định
+                        handleSubmit();
+                    }}>
                     <div className="mb-3">
-                        <label htmlFor="InputName"className="form-label">Your name</label>
-                        <input type="text" className="form-control" id="InputName" aria-describedby="nameHelp" onChange={handleChange} name="displayname" value={displayname} required/>
-                        <div id="nameHelp" className="form-text">Enter your fullname please.</div>
+                        <Input inputId='InputName' labelName='Your name' inputName='displayname' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="InputEmail" className="form-label">Email address</label>
-                        <input type="email" className="form-control" id="InputEmail" aria-describedby="emailHelp" onChange={handleChange} name="email" value={email} required/>
-                        <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                        <Input inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="InputPassword" className="form-label">Password</label>
-                        <input type="password" className="form-control" id="InputPassword" onChange={handleChange} name="password" value={password} required/>
+                        <Input inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
                     </div>
                     <div className="mb-3">
-                        <label htmlFor="ConfirmPassword" className="form-label">Confirm Password</label>
-                        <input type="password" className="form-control" id="ConfirmPassword" onChange={handleChange} name="confirmPassword" value={confirmPassword} required/>
+                        <Input inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
                     </div>
                     <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
