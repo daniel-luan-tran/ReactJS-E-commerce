@@ -1,6 +1,7 @@
 import './form-input.styles.scss';
+//import './sass-test.styles.sass';
 
-export const Input = ({inputId, labelName, inputName, inputValue, onChangeHandler, isRequired, helpId, helpText }) => {
+export const Input = ({inputId, labelName, inputName, inputValue, onChangeHandler, isRequired, helpId, helpText, styles }) => {
     return (
         <div className='group'>
             <label htmlFor={inputId} className={`form-input-label ${inputValue.length > 0 ? 'shrink' : ''}`}>{labelName}</label>
