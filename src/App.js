@@ -24,8 +24,6 @@ function App() {
             <Route index element={<HomePage/>} />
             <Route path="shop" element={<Shop/>} />
             <Route path="auth" element={<Auth/>} />
-            {/* <Route path="sign-in" element={<SignIn/>} />
-            <Route path="sign-up" element={<SignUp/>} /> */}
           </Route>
         </Routes>
       </BrowserRouter>

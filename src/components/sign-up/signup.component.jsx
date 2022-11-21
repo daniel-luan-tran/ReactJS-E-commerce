@@ -66,22 +66,16 @@ export const SignUp = () => {
                     handleSubmit();
                 }}>
                     <div className="mb-3">
-                        <Input inputId='InputName' labelName='Your name' inputName='displayname' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
+                        <Input typeName='text' inputId='InputName' labelName='Your name' inputName='displayname' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
-                        <Input inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
+                        <Input typeName='email' inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                     </div>
                     <div className="mb-3">
-                    <Input inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                    <Input typeName='password' inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
-                    <Input inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                    <Input typeName='password' inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
-                        {/* <div className="row">
-                            <div className="col-lg-6">
-                            </div>
-                            <div className="col-lg-6">
-                            </div>
-                        </div> */}
                     </div>
                     <Button buttonName={'Sign up'} buttonType={'default'} />
                 </form>

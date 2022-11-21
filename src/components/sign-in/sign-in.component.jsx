@@ -1,8 +1,8 @@
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Input } from "../form-input/form-input.component";
 import { Button } from "../button/button.component";
-import { async } from "@firebase/util";
+import { UserProvider, UserContext } from "../contexts/user.context";
 
 const defaultFormFields = {
     email: "",
@@ -12,6 +12,9 @@ const defaultFormFields = {
 const SignIn = () => {
     const [state, setStateForFormField] = useState(defaultFormFields); //defaultFormFields set defaulf value cho state => truyền destructure (*) (dòng dưới)
     const { email, password } = state; //(*)
+
+    const {setCurrentUser, currentUser} = useContext(UserContext); //Hàm này của react có param là UserContext return {setCurrentUser, currentUser}
+    
     console.log(state);
 
     const logGoogleUser = async () => {
@@ -31,6 +34,8 @@ const SignIn = () => {
     const handleLoginSubmit = async () => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            setCurrentUser(user);
+            console.log(currentUser);
             console.log(user);
         } catch (error) {
             if (error.code == 'auth/wrong-password') {
@@ -71,10 +76,10 @@ const SignIn = () => {
                         handleLoginSubmit();
                     }}>
                         <div className="mb-3">
-                            <Input inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
+                            <Input typeName={'email'} inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                         </div>
                         <div className="mb-3">
-                            <Input inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                            <Input typeName={'password'} inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
                         </div>
                         <div className="row" style={{justifyContent: 'space-between'}}>
                             <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><Button buttonName={'Sign in'} buttonType={'default'} typeName='submit' /></div>
