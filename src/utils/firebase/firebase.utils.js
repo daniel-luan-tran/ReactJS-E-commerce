@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {getAuth, signInWithRedirect, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -71,3 +71,15 @@ export const signInAuthUserWithEmailAndPassword = async (email, password) => {
 
   return await signInWithEmailAndPassword(auth, email, password);
 }
+
+export const SignOutUser = async (auth) => {
+  signOut(auth);
+}
+
+//Ghi gọi hàm onAuthStateChangedHandler => Gọi onAuthStateChanged, 
+//nó sẽ kiểm tra auth có thay đổi không, nếu có thì gọi hàm callback được truyền vào
+export const onAuthStateChangedHandler = (callBack) => {
+  debugger
+  onAuthStateChanged(auth, callBack) //Hàm này trả về UserImpl truyền vào hàm callBack
+}
+  
