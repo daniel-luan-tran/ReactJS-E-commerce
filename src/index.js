@@ -6,11 +6,14 @@ import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 import {UserProvider, UserContext} from '../src/components/contexts/user.context';
+import { ProductProvider } from './components/contexts/product.context';
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <ProductProvider>
+        <App />
+      </ProductProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root')

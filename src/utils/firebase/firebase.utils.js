@@ -79,7 +79,6 @@ export const SignOutUser = async (auth) => {
 //Ghi gọi hàm onAuthStateChangedHandler => Gọi onAuthStateChanged, 
 //nó sẽ kiểm tra auth có thay đổi không, nếu có thì gọi hàm callback được truyền vào
 export const onAuthStateChangedHandler = (callBack) => {
-  debugger
   onAuthStateChanged(auth, callBack) //Hàm này trả về UserImpl truyền vào hàm callBack
 }
   

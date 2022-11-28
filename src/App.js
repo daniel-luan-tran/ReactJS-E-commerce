@@ -6,14 +6,7 @@ import { Auth } from './components/authentication/auth.component';
 // import SignIn from './components/sign-in/sign-in.component';
 // import { SignUp } from './components/sign-up/signup.component';
 import HomePage from './pages/homepage/homepage.component';
-
-const Shop = () => {
-  return (
-    <div>
-      <h1>Hello World!!!!!</h1>
-    </div>
-  )
-}
+import { Shop } from "./components/shop/shop.component";
 
 function App() {
   return (
