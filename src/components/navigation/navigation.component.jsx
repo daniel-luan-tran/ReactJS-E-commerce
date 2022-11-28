@@ -3,6 +3,7 @@ import { Fragment, useContext } from "react"
 import { UserContext, UserProvider } from "../contexts/user.context"
 import{ ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import {SignOutUser, auth} from '../../utils/firebase/firebase.utils'
+import CartIcon from "../cart-icon/cart-icon.component"
 
 const Navigation = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -41,12 +42,9 @@ const Navigation = () => {
                   <Link className="nav-link" to="/auth">Authentication</Link>
                 </li>
                 }
-                {/* <li className="nav-item">
-                  <Link className="nav-link" to="/sign-in">Sign In</Link>
-                </li>
                 <li className="nav-item">
-                  <Link className="nav-link" to="/sign-up">Sign Up</Link>
-                </li> */}
+                  <CartIcon />
+                </li>
               </ul>
             </div>
           </div>

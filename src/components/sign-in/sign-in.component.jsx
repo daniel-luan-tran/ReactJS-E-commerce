@@ -1,7 +1,7 @@
 import { signInWithGooglePopup, createUserDocumentFromAuth, signInAuthUserWithEmailAndPassword } from "../../utils/firebase/firebase.utils";
 import { useContext, useState } from "react";
 import { Input } from "../form-input/form-input.component";
-import { Button } from "../button/button.component";
+import { MyButton } from "../button/button.component";
 import { UserProvider, UserContext } from "../contexts/user.context";
 
 const defaultFormFields = {
@@ -83,8 +83,8 @@ const SignIn = () => {
                             <Input typeName={'password'} inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
                         </div>
                         <div className="row" style={{justifyContent: 'space-between'}}>
-                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><Button buttonName={'Sign in'} buttonType={'default'} typeName='submit' /></div>
-                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><Button buttonName={'Google Sign in'} buttonType={'googleSignIn'} typeName={'button'} onClickHandler={logGoogleUser} /></div>
+                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Sign in'} buttonType={'default'} typeName='submit' /></div>
+                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Google Sign in'} buttonType={'googleSignIn'} typeName={'button'} onClickHandler={logGoogleUser} /></div>
                         </div>
                     </form>
                 </div>

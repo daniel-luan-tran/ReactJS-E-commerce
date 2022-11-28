@@ -1,4 +1,4 @@
-import { Button } from "../button/button.component";
+import { MyButton } from "../button/button.component";
 import "../product-card/product-card.styles.scss"
 
 const ProductCard = ({product}) => {
@@ -11,7 +11,7 @@ const ProductCard = ({product}) => {
                 <span className="name">{name}</span>
                 <span className="price">{price}</span>
             </div>
-            <Button buttonName='Add to cart' typeName='button' buttonType='inverted' />
+            <MyButton buttonName='Add to cart' typeName='button' buttonType='inverted' />
         </div>
     );
 }

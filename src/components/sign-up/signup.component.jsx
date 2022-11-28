@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
 import { Input } from "../form-input/form-input.component";
-import { Button } from "../button/button.component";
+import { MyButton } from "../button/button.component";
 import { UserContext } from "../contexts/user.context";
 
 const defaultFormFields = {
@@ -81,7 +81,7 @@ export const SignUp = () => {
                     <Input typeName='password' inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
                     </div>
-                    <Button buttonName={'Sign up'} buttonType={'default'} />
+                    <MyButton buttonName={'Sign up'} buttonType={'default'} />
                 </form>
             </div>
         </div>

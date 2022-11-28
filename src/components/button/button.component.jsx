@@ -11,7 +11,7 @@ const type = {
     button: 'button'
 }
 
-export const Button = ({buttonName, buttonType, typeName, onClickHandler}) => {
+export const MyButton = ({buttonName, buttonType, typeName, onClickHandler}) => {
     
     return (
         <>
