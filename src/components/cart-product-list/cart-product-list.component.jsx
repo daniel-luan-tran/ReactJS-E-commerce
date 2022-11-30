@@ -1,9 +1,4 @@
 import CartProduct from "../cart-product/cart-product.component";
-// export const CartProduct = (props) => {
-//     debugger
-//     const {item} = props;
-//     <div>{item.name}</div>
-// }
 
 const CartProductList = (props) => {
     const {productChosen} = props;
@@ -13,7 +8,7 @@ const CartProductList = (props) => {
             ? 
             productChosen.map((item) => {
                 debugger
-                return(<CartProduct item={item} />);
+                return(<CartProduct key={item.id} item={item} />);
             })
             : 
             <div style={{height: '100', fontWeight:'bold'}}>Nothing was added in cart</div>

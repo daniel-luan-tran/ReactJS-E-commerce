@@ -1,18 +1,15 @@
 import { MyButton } from "../button/button.component";
 import "../product-card/product-card.styles.scss";
 import { useContext } from "react";
-import {ProductChosenContext} from '../../components/contexts/productChosen.context';
+import {CartContext} from '../../components/contexts/cart.context';
 
 const ProductCard = ({product}) => {
-    const {productChosen, setProductChosen} = useContext(ProductChosenContext);
+    const {productChosen, setProductChosen, addItemToCart, cartCount} = useContext(CartContext);
     const {id, name, imageUrl, price} = product;
     console.log(productChosen);
     const onClickHandler = () => {
         debugger
-        productChosen.push(product)
-        setProductChosen(
-            productChosen
-        );
+        addItemToCart(product);
         console.log(productChosen);
     }
     return(

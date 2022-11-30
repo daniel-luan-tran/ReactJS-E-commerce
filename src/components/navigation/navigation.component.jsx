@@ -4,9 +4,12 @@ import { UserContext, UserProvider } from "../contexts/user.context"
 import{ ReactComponent as CrownLogo } from '../../assets/crown.svg'
 import {SignOutUser, auth} from '../../utils/firebase/firebase.utils'
 import CartIcon from "../cart-icon/cart-icon.component"
+import CartDropDown from "../cart-dropdown/cart-dropdown.component"
+import { CartContext } from "../contexts/cart.context";
 
 const Navigation = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
+    const { toggleShow } = useContext(CartContext);
 
     const SignOutHandler = async () => {
       debugger
@@ -45,6 +48,7 @@ const Navigation = () => {
                 <li className="nav-item">
                   <CartIcon />
                 </li>
+                {toggleShow && <CartDropDown />}
               </ul>
             </div>
           </div>
