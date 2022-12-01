@@ -30,7 +30,7 @@ export const CartProvider = ({children}) => {
         const setQuantity = (newProduct) => {
             return newProduct.map((item) => 
             item.id == _product.id 
-                ? {...item, quantity: item.quantity + 1}
+                ? {...item, quantity: item.quantity + 1} //spread out all of properties except quantity is set new value
                 : {...item}
             );
         }
