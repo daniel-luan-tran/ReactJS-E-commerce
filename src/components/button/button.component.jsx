@@ -11,16 +11,16 @@ const type = {
     button: 'button'
 }
 
-export const MyButton = ({buttonName, buttonType, typeName, onClickHandler}) => {
+export const MyButton = ({buttonName, buttonType, typeName, onClickHandler, otherProps}) => {
     
     return (
         <>
         {
             onClickHandler 
                 ?
-                <button type={type[typeName]} className={`button-container ${button_type[buttonType]}`} onClick={onClickHandler} >{buttonName}</button>
+                <button type={type[typeName]} className={`button-container ${button_type[buttonType]}`} onClick={onClickHandler} {...otherProps} >{buttonName}</button>
                 :
-                <button type={type[typeName]} className={`button-container ${button_type[buttonType]}`} >{buttonName}</button>
+                <button type={type[typeName]} className={`button-container ${button_type[buttonType]}`} {...otherProps} >{buttonName}</button>
         }
         </>
     )

@@ -5,14 +5,17 @@ import { createContext, useState } from 'react';
 export const ProductContext = createContext(
     {
         products: null,
-        setProducts: () => null
+        setProducts: () => null,
+        isShowShop: null,
+        setIsShowShop: () => {}
     }
 );
 
 //Truyền dữ liệu vào context
 export const ProductProvider = ({children}) => {
     const [products, setProducts] = useState(ShopData);
-    const value = {products, setProducts};
+    const [isShowShop, setIsShowShop] = useState(true);
+    const value = {products, setProducts, isShowShop, setIsShowShop};
 
     return (
         <ProductContext.Provider value={value}>

@@ -8,7 +8,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {UserProvider, UserContext} from '../src/components/contexts/user.context';
 import { ProductProvider } from './components/contexts/product.context';
 import { CartProvider } from './components/contexts/cart.context';
-import { ProductChosenProvider } from './components/contexts/productChosen.context';
 
 ReactDOM.render(
   <React.StrictMode>

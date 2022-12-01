@@ -7,6 +7,7 @@ import { Auth } from './components/authentication/auth.component';
 // import { SignUp } from './components/sign-up/signup.component';
 import HomePage from './pages/homepage/homepage.component';
 import { Shop } from "./components/shop/shop.component";
+import Checkout from './components/check-out/check-out.component';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route index element={<HomePage/>} />
             <Route path="shop" element={<Shop/>} />
             <Route path="auth" element={<Auth/>} />
+            <Route path="checkout" element={<Checkout/>} />
           </Route>
         </Routes>
       </BrowserRouter>

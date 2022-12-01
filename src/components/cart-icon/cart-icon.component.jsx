@@ -1,18 +1,19 @@
 import "../../components/cart-icon/cart-icon.styles.scss"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import{ ReactComponent as ShoppingBag } from '../../assets/shopping-bag.svg'
-import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 import { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 
 const CartIcon = () => {
-    const {toggleShow, setToggleShow, cartCount} = useContext(CartContext);
+    var {toggleShow, setToggleShow, cartCount, productChosen, setProductChosen} = useContext(CartContext);
     debugger
     const showHideHandler = () => {
-        setToggleShow(!toggleShow);
+        //setToggleShow(!toggleShow);
     }
+
+
     return (
-        <div className="cart-icon-container" onClick={showHideHandler}>
+        <div className="cart-icon-container" data-bs-toggle="collapse" data-bs-target="#cart-dropdown" aria-expanded="false" aria-controls="cart-dropdown" onClick={showHideHandler}>
             <ShoppingBag className="shopping-icon" />
             <span className="item-count">{cartCount}</span>
         </div>

@@ -1,26 +1,31 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext(
     {
         toggleShow: "",
-        setToggleShow: () => null,
+        setToggleShow: () => {},
 
         productChosen : [],
-        setProductChosen : () => null,
+        setProductChosen : () => {},
         addItemToCart: () => {},
         cartCount: 0,
-        setCartCount: () => {}
+        setCartCount: () => {},
     }
 )
 
 export const CartProvider = ({children}) => {
+    debugger
     const [toggleShow, setToggleShow] = useState(false);
     const [productChosen, setProductChosen] = useState([]);
     const [cartCount, setCartCount] = useState(0);
 
     const checkExistProduct = (_product) => {
-        if (productChosen.filter(_ => _.id == _product.id).length > 0)
-            return true;
+        if (typeof productChosen != "undefined") {
+            if (productChosen.filter(_ => _.id == _product.id).length > 0)
+                return true;
+            else
+                return false;
+        }
         else
             return false;
     }
@@ -62,15 +67,11 @@ export const CartProvider = ({children}) => {
         _product.quantity = 1;
         setItem(_product)
 
-        // const newProduct = [...productChosen, product];
-        // setProductChosen(newProduct);
-        // setCartCount(productChosen.length+1);
         console.log(productChosen)
     }
 
     const value = {productChosen, setProductChosen, addItemToCart, toggleShow, setToggleShow, cartCount, setCartCount};
 
-    debugger
     return (
         <CartContext.Provider value={value}>
             {children}

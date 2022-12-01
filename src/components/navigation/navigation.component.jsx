@@ -6,10 +6,11 @@ import {SignOutUser, auth} from '../../utils/firebase/firebase.utils'
 import CartIcon from "../cart-icon/cart-icon.component"
 import CartDropDown from "../cart-dropdown/cart-dropdown.component"
 import { CartContext } from "../contexts/cart.context";
+import Checkout from "../check-out/check-out.component"
 
 const Navigation = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const { toggleShow } = useContext(CartContext);
+    const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
 
     const SignOutHandler = async () => {
       debugger
@@ -48,7 +49,8 @@ const Navigation = () => {
                 <li className="nav-item">
                   <CartIcon />
                 </li>
-                {toggleShow && <CartDropDown />}
+                {/* {toggleShow && <CartDropDown />} */}
+                <CartDropDown />
               </ul>
             </div>
           </div>
