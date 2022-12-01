@@ -11,7 +11,8 @@ const CartProductList = (props) => {
                 return(<CartProduct key={item.id} item={item} />);
             })
             : 
-            <div style={{height: '100', fontWeight:'bold'}}>Nothing was added in cart</div>
+            <div style={{display: "flex", alignItems: "center", justifyContent: "center", height: "100%"}}><span style={{fontWeight: "bold", textAlign: "center"}}>Nothing in cart</span></div>
     );
 }
+
 export default CartProductList;

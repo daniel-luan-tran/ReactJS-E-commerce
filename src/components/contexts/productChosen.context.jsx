@@ -11,11 +11,22 @@ export const ProductChosenContext = createContext(
 export const ProductChosenProvider = ({children}) => {
     const [productChosen, setProductChosen] = useState([]);
     
+    const _product = {
+        id: 0,
+        name: "",
+        price: 0,
+        imageUrl: "",
+        quantity: 0,
+    }
+
     const addItemToCart = (product) => {
+        const {id, name, price, imageUrl, quantity} = _product;
+        
         productChosen.push(product);
         setProductChosen(productChosen);
         console.log(productChosen)
     }
+
     const value = {productChosen, setProductChosen, addItemToCart};
 
     return (
