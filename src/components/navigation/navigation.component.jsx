@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useLocation } from "react-router-dom"
 import { Fragment, useContext } from "react"
 import { UserContext, UserProvider } from "../contexts/user.context"
 import{ ReactComponent as CrownLogo } from '../../assets/crown.svg'
@@ -7,20 +7,33 @@ import CartIcon from "../cart-icon/cart-icon.component"
 import CartDropDown from "../cart-dropdown/cart-dropdown.component"
 import { CartContext } from "../contexts/cart.context";
 import Checkout from "../check-out/check-out.component"
+import { ProductContext } from "../contexts/product.context"
 
 const Navigation = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
     const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
+    const {isShowShop, setIsShowShop} = useContext(ProductContext)
+    debugger
+    // window.addEventListener('popstate', () => {
+    //   setIsShowShop(!isShowShop);
+    // });
+    // const pushUrl = (href) => {
+    //   window.history.pushState({}, '', href);
+    //   window.dispatchEvent(new Event('popstate'));
+    // };
+
+    // const location = useLocation();
+
+    // pushUrl(location.pathname);
 
     const SignOutHandler = async () => {
-      debugger
       await SignOutUser(auth);
       //setCurrentUser(null);
     }
 
     return (
       <Fragment>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
           <div className="container-fluid">
             <Link className="navbar-brand" to="#">
                 <CrownLogo className="logo"/>

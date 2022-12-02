@@ -8,7 +8,6 @@ const ProductCard = ({product}) => {
     const {id, name, imageUrl, price} = product;
     console.log(productChosen);
     const onClickHandler = () => {
-        debugger
         addItemToCart(product);
         console.log(productChosen);
     }

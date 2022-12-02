@@ -14,7 +14,7 @@ export const CartContext = createContext(
 )
 
 export const CartProvider = ({children}) => {
-    debugger
+    
     const [toggleShow, setToggleShow] = useState(false);
     const [productChosen, setProductChosen] = useState([]);
     const [cartCount, setCartCount] = useState(0);
@@ -31,7 +31,7 @@ export const CartProvider = ({children}) => {
     }
 
     const setItem = (_product) => {
-        debugger
+        
         const setQuantity = (newProduct) => {
             return newProduct.map((item) => 
             item.id == _product.id 
@@ -59,7 +59,7 @@ export const CartProvider = ({children}) => {
     }
 
     const addItemToCart = (product) => {
-        debugger
+        
         _product.id = product.id;
         _product.name = product.name;
         _product.price = product.price;

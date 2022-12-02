@@ -3,14 +3,12 @@ import "./cart-product-list.styles.scss"
 
 const CartProductList = (props) => {
     const {productChosen} = props;
-    debugger
-    return(
+    return (
         <div className="cart-product-list">
             {
                 (typeof productChosen != 'undefined' && productChosen.length > 0)
                 ? 
                 productChosen.map((item) => {
-                    debugger
                     return(<CartProduct key={item.id} item={item} />);
                 })
                 : 

@@ -4,7 +4,7 @@ import SignIn from "../sign-in/sign-in.component"; //export default
 export const Auth = () => {
     return (
         <>
-        <div className="row">
+        <div className="row" style={{paddingTop: "15px"}}>
             <div className="col-lg-5 mw-100">
                 <SignIn />
             </div>

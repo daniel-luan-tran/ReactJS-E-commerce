@@ -8,16 +8,19 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {UserProvider, UserContext} from '../src/components/contexts/user.context';
 import { ProductProvider } from './components/contexts/product.context';
 import { CartProvider } from './components/contexts/cart.context';
+import { NavigationProvider } from './components/contexts/navigation.context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <ProductProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </ProductProvider>
-    </UserProvider>
+    <NavigationProvider>
+      <UserProvider>
+        <ProductProvider>
+          <CartProvider>
+            <App />
+          </CartProvider>
+        </ProductProvider>
+      </UserProvider>
+    </NavigationProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

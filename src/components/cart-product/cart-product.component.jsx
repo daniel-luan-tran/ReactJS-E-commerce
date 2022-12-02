@@ -2,7 +2,7 @@ import { useState } from "react";
 import "../../components/cart-product/cart-product.styles.scss"
 
 const CartProduct = ({item}) => {
-    debugger
+    
     return (
     
         <ul className="cart-item" >

@@ -6,7 +6,7 @@ import { CartContext } from "../contexts/cart.context";
 
 const CartIcon = () => {
     var {toggleShow, setToggleShow, cartCount, productChosen, setProductChosen} = useContext(CartContext);
-    debugger
+    
     const showHideHandler = () => {
         //setToggleShow(!toggleShow);
     }

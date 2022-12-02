@@ -1,16 +1,12 @@
 import { React, useContext } from "react";
-import Checkout from "../check-out/check-out.component";
 import { ProductContext } from "../contexts/product.context";
 import ProductCard from "../product-card/product-card.component";
 import "../shop/shop.styles.scss"
-import {CartContext} from '../../components/contexts/cart.context';
 
 export const Shop = () => {
-    const {products, isShowShop} = useContext(ProductContext);
-
+    const {products} = useContext(ProductContext);
     return(
-        isShowShop ?
-        <div id="product-list" className="products-container">
+        <div id="product-list" className="products-container" style={{paddingTop: "85px"}}>
             {            
                 products.map((product) => {
                     return (
@@ -19,8 +15,6 @@ export const Shop = () => {
                 })
             }
         </div>
-        :
-        <Checkout />
     )
 
 }
