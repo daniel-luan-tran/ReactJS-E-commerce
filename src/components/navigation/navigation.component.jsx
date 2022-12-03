@@ -47,10 +47,9 @@ const Navigation = () => {
                   <Link className="nav-link" to="/auth">Authentication</Link>
                 </li>
                 }
-                <li className="nav-item">
+                <li className="nav-item d-flex justify-content-end" >
                   <CartIcon />
                 </li>
-                {/* {toggleShow && <CartDropDown />} */}
                 <CartDropDown />
               </ul>
             </div>

@@ -1,9 +1,18 @@
-import React from 'react';
-import './menu-item.styles.scss'
+import React, { useContext } from 'react';
+import './menu-item.styles.scss';
+import { useNavigate } from 'react-router-dom';
+import { NavigationContext } from '../contexts/navigation.context';
 
-const MenuItem = ({id, title, imageUrl, size}) => {
+const MenuItem = ({title, imageUrl}) => {
+    const {navigation, setNavigation} = useContext(NavigationContext);
+    const navigate = useNavigate();
+    
+    const onClickHandler = (title) => {
+        navigate(`shop/${title}`)
+    }
+
     return (
-        <div className={`menu-item ${size}`}>
+        <div className={`menu-item large`} onClick={() => {onClickHandler(title)}}>
             <div className='background-image'
                 style={{backgroundImage: `url(${imageUrl})`}}
             >

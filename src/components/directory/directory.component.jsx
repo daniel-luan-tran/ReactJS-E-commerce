@@ -1,4 +1,3 @@
-// import { render } from '@testing-library/react';
 import React, { useContext } from 'react';
 import MenuItem from '../menu-item/menu-item.component';
 import './directory.styles.scss';
@@ -45,15 +44,15 @@ const data = {
 }
 
 const Directory = () => {
-    const {} = useContext(ProductContext);
-
+    const {products} = useContext(ProductContext);
     return (
         <div className='directory-menu'>
         {
-            data.sections.map(({title, imageUrl, id, size}) => {
-                return (
-                    <MenuItem key={id} title={title} imageUrl={imageUrl} size={size} />
-                )
+            !(Object.keys(products).length === 0 && products.constructor === Object) &&
+            Object.entries(products).map((item) => {
+                const category = item[0];
+                const _products = item[1];
+                return <MenuItem key={category} title={category} imageUrl={_products[0].imageUrl} />
             })
         }
         </div>

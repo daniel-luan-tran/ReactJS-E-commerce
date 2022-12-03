@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/cart.context";
 import { MyButton } from "../button/button.component";
-import "./check-out.styles.scss"
+import "./check-out.styles.scss";
 
 const Checkout = () => {
     const {productChosen, setProductChosen, cartCount, setCartCount} = useContext(CartContext);
