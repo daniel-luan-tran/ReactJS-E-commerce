@@ -1,7 +1,8 @@
 // import { render } from '@testing-library/react';
-import React from 'react';
+import React, { useContext } from 'react';
 import MenuItem from '../menu-item/menu-item.component';
-import './directory.styles.scss'
+import './directory.styles.scss';
+import { ProductContext } from '../contexts/product.context';
 
 const data = {
     sections: [
@@ -44,6 +45,8 @@ const data = {
 }
 
 const Directory = () => {
+    const {} = useContext(ProductContext);
+
     return (
         <div className='directory-menu'>
         {

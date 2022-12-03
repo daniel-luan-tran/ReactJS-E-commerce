@@ -60,10 +60,10 @@ const Checkout = () => {
     }
     
     return(
-        <div className="px-5" style={{paddingTop: "85px"}}>
-            <div className="row justify-content-center py-3 border-bottom">
-                <div className="col-lg-3 d-flex justify-content-center align-items-center">Image</div>
-                <div className="col-lg-2 d-flex justify-content-center align-items-center">Description</div>
+        <div className="" style={{paddingTop: "85px", maxWidth: "70%", margin: "auto"}}>
+            <div className="row justify-content-center py-3 border-bottom fw-bold">
+                <div className="col-lg-2 d-flex justify-content-center align-items-center">Image</div>
+                <div className="col-lg-3 d-flex justify-content-center align-items-center">Description</div>
                 <div className="col-lg-2 d-flex justify-content-center align-items-center">Quantity</div>
                 <div className="col-lg-2 d-flex justify-content-center align-items-center">Price/Item</div>
                 <div className="col-lg-2 d-flex justify-content-center align-items-center">Price</div>
@@ -76,8 +76,8 @@ const Checkout = () => {
                     productChosen.map((product) => {
                         return (
                         <div key={product.id} className="row justify-content-center py-3 border-bottom">
-                            <div className="col-lg-3 d-flex justify-content-center align-items-center"><img className="check-out-img" src={`${product.imageUrl}`} /></div>
-                            <div className="col-lg-2 d-flex align-items-center justify-content-center">{product.name}</div>
+                            <div className="col-lg-2 d-flex justify-content-center align-items-center"><img className="check-out-img" src={`${product.imageUrl}`} /></div>
+                            <div className="col-lg-3 d-flex align-items-center justify-content-center">{product.name}</div>
                             <div className="col-lg-2 d-flex justify-content-between align-items-center">
                                 <MyButton buttonName="<" buttonType="default" typeName="button" styles={{width: "5px", minWidth: "5px"}} onClickHandler={() => {DecreaseQuantity(product)}} />
                                 {product.quantity}
@@ -86,14 +86,14 @@ const Checkout = () => {
                             <div className="col-lg-2 d-flex justify-content-center align-items-center">${product.price}</div>
                             <div className="col-lg-2 d-flex justify-content-center align-items-center">${product.price * product.quantity}</div>
                             <div className="col-lg-1 d-flex justify-content-center align-items-center">
-                                <MyButton buttonName="x" buttonType="default" typeName="button" onClickHandler={() => {RemoveItem(product)}} />
+                                <MyButton buttonName="x" buttonType="default" typeName="button" styles={{width: "5px", minWidth: "5px"}} onClickHandler={() => {RemoveItem(product)}} />
                             </div>
                         </div>
                         )
                     })
                 )
                 :
-                <div>Nothing in cart!!!</div>
+                <div className="fw-bold">Nothing in cart!!!</div>
             }
             <div className="row justify-content-center py-3 border-bottom">
                 <div className="col-lg-9 d-flex justify-content-center align-items-center"></div>

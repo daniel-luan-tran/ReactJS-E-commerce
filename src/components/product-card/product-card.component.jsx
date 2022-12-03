@@ -11,6 +11,7 @@ const ProductCard = ({product}) => {
         addItemToCart(product);
         console.log(productChosen);
     }
+    debugger
     return(
         <div className='product-card-container'>
             <img src={`${imageUrl}`} />

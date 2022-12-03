@@ -12,7 +12,7 @@ export const NavigationContext = createContext(
 export const NavigationProvider = ({children}) => {
     const [navigation, setNavigation] = useState("/");
     const value = {navigation, setNavigation};
-
+    
     return (
         <NavigationContext.Provider value={value}>
             {children}

@@ -11,20 +11,8 @@ import { ProductContext } from "../contexts/product.context"
 
 const Navigation = () => {
     const { currentUser, setCurrentUser } = useContext(UserContext);
-    const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
-    const {isShowShop, setIsShowShop} = useContext(ProductContext)
-    debugger
-    // window.addEventListener('popstate', () => {
-    //   setIsShowShop(!isShowShop);
-    // });
-    // const pushUrl = (href) => {
-    //   window.history.pushState({}, '', href);
-    //   window.dispatchEvent(new Event('popstate'));
-    // };
-
-    // const location = useLocation();
-
-    // pushUrl(location.pathname);
+    // const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
+    // const {isShowShop, setIsShowShop} = useContext(ProductContext)
 
     const SignOutHandler = async () => {
       await SignOutUser(auth);
