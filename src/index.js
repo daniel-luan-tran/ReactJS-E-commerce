@@ -9,16 +9,22 @@ import {UserProvider, UserContext} from '../src/components/contexts/user.context
 import { ProductProvider } from './components/contexts/product.context';
 import { CartProvider } from './components/contexts/cart.context';
 import { NavigationProvider } from './components/contexts/navigation.context';
+import { CategoryProvider } from './components/contexts/category.context';
+import { SearchProvider } from './components/contexts/search.context';
 
 ReactDOM.render(
   <React.StrictMode>
     <NavigationProvider>
       <UserProvider>
-        <ProductProvider>
-          <CartProvider>
-            <App />
-          </CartProvider>
-        </ProductProvider>
+        <SearchProvider>
+          <ProductProvider>
+            <CategoryProvider>
+              <CartProvider>
+                <App />
+              </CartProvider>
+            </CategoryProvider>
+          </ProductProvider>
+        </SearchProvider>
       </UserProvider>
     </NavigationProvider>
   </React.StrictMode>,

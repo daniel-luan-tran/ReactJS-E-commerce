@@ -8,21 +8,32 @@ export const ProductContext = createContext(
     {
         products: null,
         setProducts: () => null,
-        isShowShop: null,
-        setIsShowShop: () => {}
+        productsArray: [],
+        setProductsArray: () => {}
     }
 );
 
 //Truyền dữ liệu vào context
 export const ProductProvider = ({children}) => {
     const [products, setProducts] = useState({});
+    const [productsArray, setProductsArray] = useState({});
     const [isShowShop, setIsShowShop] = useState(true);
-    const value = {products, setProducts, isShowShop, setIsShowShop};
+    const value = {products, setProducts, isShowShop, setIsShowShop, productsArray, setProductsArray};
 
     useEffect(() => {
         //addCollectionAndDocuments("categories", SHOP_DATA);
         const getDataFromFireStore = async () => {
             const data = await getCategoriesAndDocuments();
+            let arrayData = [];
+
+            Object.entries(data).map((_) => {
+                _[1].map((__) => {
+                    arrayData.push({...__, category: _[0]});
+                });
+            })
+            debugger
+            console.log(arrayData);
+            setProductsArray(arrayData);
             setProducts(data);
         }
         getDataFromFireStore();

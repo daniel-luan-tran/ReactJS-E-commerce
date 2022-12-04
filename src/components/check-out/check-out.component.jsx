@@ -8,7 +8,6 @@ const Checkout = () => {
 
     const totalPrice = (productChosen) => {
         return productChosen.reduce((acc, product) => {
-            debugger
             let rs = acc + (product.quantity * product.price)
             return rs
         }, 0);
@@ -79,14 +78,14 @@ const Checkout = () => {
                             <div className="col-lg-2 d-flex justify-content-center align-items-center"><img className="check-out-img" src={`${product.imageUrl}`} /></div>
                             <div className="col-lg-3 d-flex align-items-center justify-content-center">{product.name}</div>
                             <div className="col-lg-2 d-flex justify-content-between align-items-center">
-                                <MyButton buttonName="<" buttonType="default" typeName="button" styles={{width: "5px", minWidth: "5px"}} onClickHandler={() => {DecreaseQuantity(product)}} />
+                                <MyButton buttonName="<" buttonType="default" typeName="button" styles={{maxWidth: "10px", minWidth: "10px", paddingLeft: "12px", paddingRight: "12px", height: "28px", alignItems: "center"}} onClickHandler={() => {DecreaseQuantity(product)}} />
                                 {product.quantity}
-                                <MyButton buttonName=">" buttonType="default" typeName="button" styles={{width: "5px", minWidth: "5px"}} onClickHandler={() => {IncreaseQuantity(product)}} />
+                                <MyButton buttonName=">" buttonType="default" typeName="button" styles={{maxWidth: "10px", minWidth: "10px", paddingLeft: "12px", paddingRight: "12px", height: "28px", alignItems: "center"}} onClickHandler={() => {IncreaseQuantity(product)}} />
                             </div>
                             <div className="col-lg-2 d-flex justify-content-center align-items-center">${product.price}</div>
                             <div className="col-lg-2 d-flex justify-content-center align-items-center">${product.price * product.quantity}</div>
                             <div className="col-lg-1 d-flex justify-content-center align-items-center">
-                                <MyButton buttonName="x" buttonType="default" typeName="button" styles={{width: "5px", minWidth: "5px"}} onClickHandler={() => {RemoveItem(product)}} />
+                                <MyButton buttonName="x" buttonType="default" typeName="button" styles={{maxWidth: "10px", minWidth: "10px", paddingLeft: "12px", paddingRight: "12px", height: "28px", alignItems: "center"}} onClickHandler={() => {RemoveItem(product)}} />
                             </div>
                         </div>
                         )
