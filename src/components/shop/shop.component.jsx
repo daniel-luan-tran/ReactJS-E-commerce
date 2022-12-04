@@ -12,27 +12,46 @@ export const Shop = (props) => {
     const {searchString} = useContext(SearchContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
     debugger
-    useEffect(() => {
-        return setFilteredProducts(productsArray);
-    }, [productsArray])
+    // useEffect(() => {
+    //     return setFilteredProducts(productsArray);
+    // }, [productsArray])
 
     useEffect(() => {
         Object.entries(products).map((item) => {
             const category = item[0];
             const _products = item[1];
             return _products.map((product, index) => {
-                if(product.name.toLowerCase().includes(searchString.toLowerCase())) {
-                    return setFilteredProducts(productsArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
-                }
+                return setFilteredProducts(productsArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
             })
         })
     }, [searchString])
-
     
+    const renderProductCard = (item) => {
+        debugger
+        const category = item[0];
+        const _products = item[1];
+        return _products.map((product, index) => {
+            return (
+                <ProductCard key={`${category}-${product.id}`} product={product} index={index} category={category} />
+            )
+        })
+    }
+
+    const renderProductCardByFilteredProducts = (filteredProducts) => {
+        return filteredProducts.length > 0 
+        ? 
+        filteredProducts.map((product, index) => <ProductCard key={`${product.category}-${product.id}`} product={product} index={index} category={product.category} /> )
+        : <></>
+    }
+
     const IsExistProduct = () => {
+        const check = Object.keys(products).length === 0 && products.constructor === Object;
+        debugger
         return (Object.keys(products).length === 0 && products.constructor === Object) ? false : true
     }
     const IsExist = (items) => {
+        const check = Object.keys(items).length === 0 && products.constructor === Object;
+        debugger
         return (Object.keys(items).length === 0 && products.constructor === Object) ? false : true
     }
     debugger
@@ -43,37 +62,21 @@ export const Shop = (props) => {
                 {
                     categorySelected == "" || typeof categorySelected == "undefined"
                     ?
-                        IsExist(filteredProducts) || filteredProducts.length == 0 ?
-                        (IsExistProduct) &&
+                        searchString == "" ?
                         Object.entries(products).map((item) => {
-                            debugger
-                            const category = item[0];
-                            const _products = item[1];
-                            return _products.map((product, index) => {
-                                return (
-                                    <ProductCard key={`${category}-${product.id}`} product={product} index={index} category={category} />
-                                )
-                            })
+                            return renderProductCard(item);
                         })
                         :
                         /// If Searching products by name
-                        IsExist(filteredProducts) && filteredProducts.map((product, index) => <ProductCard key={`${product.category}-${product.id}`} product={product} index={index} category={product.category} />)
+                        renderProductCardByFilteredProducts(filteredProducts)
                         ///
                     :
-                    IsExistProduct &&
+                    // IsExistProduct &&
                     Object.entries(products).map((item) => {
                         if (item[0] == categorySelected) {
-                            const category = item[0];
-                            const _products = item[1];
-                            return _products.map((product, index) => {
-                                return (
-                                    <ProductCard key={`${category}-${product.id}`} product={product} index={index} category={category} />
-                                )
-                            })
+                            return renderProductCard(item)
                         }
                     })
-                    
-                    //IsExist(filteredProducts) && filteredProducts.map((product, index) => <ProductCard key={`${product.category}-${product.id}`} product={product} index={index} category={product.category} />)
                 }
             </div>
         </>
