@@ -17,6 +17,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.0",
     "sass": "^1.53.0",
+    "underscore": "^1.13.6",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
     "workbox-broadcast-update": "^5.1.4",

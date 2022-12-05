@@ -3,6 +3,8 @@ import { BoxSearch } from "../box-search/box-search.component";
 import { ProductContext } from "../contexts/product.context";
 import { SearchContext } from "../contexts/search.context";
 import ProductCard from "../product-card/product-card.component";
+import ProductCardV2 from "../product-card/product-card-v2.component";
+import { chain, pluck } from "underscore";
 import "../shop/shop.styles.scss"
 
 export const Shop = (props) => {
@@ -11,10 +13,7 @@ export const Shop = (props) => {
     const {products, setProducts} = useContext(ProductContext);
     const {searchString} = useContext(SearchContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
-    debugger
-    // useEffect(() => {
-    //     return setFilteredProducts(productsArray);
-    // }, [productsArray])
+    const [filteredProductsByKeyword, setFilteredProductsByKeyword] = useState([]);
 
     useEffect(() => {
         Object.entries(products).map((item) => {
@@ -25,36 +24,101 @@ export const Shop = (props) => {
             })
         })
     }, [searchString])
-    
-    const renderProductCard = (item) => {
+
+    useEffect(() => {
+        var result = chain(productsArray)
+        .groupBy('category')
+        .map(function(value, key) {
+            return {
+                category: key,
+                data: value
+            }
+        })
+        .value();
+        return setFilteredProductsByKeyword(result);
+    }, [productsArray])
+
+    useEffect(() => {
         debugger
+        var result = chain(filteredProducts)
+        .groupBy('category')
+        .map(function(value, key) {
+            return {
+                category: key,
+                data: value
+            }
+        })
+        .value();
+        return setFilteredProductsByKeyword(result);
+    }, [filteredProducts])
+
+    // useEffect(() => {
+    //     debugger
+    //     var result = chain(filteredProducts)
+    //     .groupBy('category')
+    //     .map(function(value, key) {
+    //         return {
+    //             category: key,
+    //             data: value
+    //         }
+    //     })
+    //     .value();
+
+    //     // if(categorySelected != "" && typeof categorySelected != "undefined") {
+    //     //     result = result.filter(_ => _.category == categorySelected);
+    //     // }
+
+    //     return setFilteredProductsByKeyword(result);
+    // }, [navigation])
+
+    // useEffect(() => {
+    //     debugger
+    //     var result = chain(productsArray)
+    //     .groupBy('category')
+    //     .map(function(value, key) {
+    //         return {
+    //             category: key,
+    //             data: value
+    //         }
+    //     })
+    //     .value();
+
+    //     // if(categorySelected != "" && typeof categorySelected != "undefined") {
+    //     //     result = result.filter(_ => _.category == categorySelected);
+    //     // }
+
+    //     return setFilteredProductsByKeyword(result);
+    // }, [])
+
+    const renderProductCard = (item) => { //Render with specific category
         const category = item[0];
         const _products = item[1];
         return _products.map((product, index) => {
-            return (
-                <ProductCard key={`${category}-${product.id}`} product={product} index={index} category={category} />
-            )
+            if (product.name.toLowerCase().includes(searchString.toLocaleLowerCase())) {
+                return (
+                    <ProductCard key={`${category}-${product.id}`} product={product} index={index} category={category} />
+                )
+            }
         })
     }
 
-    const renderProductCardByFilteredProducts = (filteredProducts) => {
-        return filteredProducts.length > 0 
+    const renderProductCardByFilteredProducts = (filteredProductsByKeyword) => { //Render with all categories
+        return filteredProductsByKeyword.length > 0 
         ? 
-        filteredProducts.map((product, index) => <ProductCard key={`${product.category}-${product.id}`} product={product} index={index} category={product.category} /> )
+        filteredProductsByKeyword.map((product, index) => {
+            return <ProductCardV2 key={`${product.category}`} product={product.data} category={product.category} />
+        } )
         : <></>
     }
 
-    const IsExistProduct = () => {
-        const check = Object.keys(products).length === 0 && products.constructor === Object;
-        debugger
-        return (Object.keys(products).length === 0 && products.constructor === Object) ? false : true
-    }
-    const IsExist = (items) => {
-        const check = Object.keys(items).length === 0 && products.constructor === Object;
-        debugger
-        return (Object.keys(items).length === 0 && products.constructor === Object) ? false : true
-    }
-    debugger
+    // const IsExistProduct = () => {
+    //     const check = Object.keys(products).length === 0 && products.constructor === Object;
+    //     return (Object.keys(products).length === 0 && products.constructor === Object) ? false : true
+    // }
+    // const IsExist = (items) => {
+    //     const check = Object.keys(items).length === 0 && products.constructor === Object;
+    //     return (Object.keys(items).length === 0 && products.constructor === Object) ? false : true
+    // }
     return(
         <>
             <div id="product-list" className="products-container" style={{paddingTop: "85px"}}>
@@ -62,16 +126,8 @@ export const Shop = (props) => {
                 {
                     categorySelected == "" || typeof categorySelected == "undefined"
                     ?
-                        searchString == "" ?
-                        Object.entries(products).map((item) => {
-                            return renderProductCard(item);
-                        })
-                        :
-                        /// If Searching products by name
-                        renderProductCardByFilteredProducts(filteredProducts)
-                        ///
+                    renderProductCardByFilteredProducts(filteredProductsByKeyword)
                     :
-                    // IsExistProduct &&
                     Object.entries(products).map((item) => {
                         if (item[0] == categorySelected) {
                             return renderProductCard(item)
