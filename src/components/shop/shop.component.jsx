@@ -6,6 +6,7 @@ import ProductCard from "../product-card/product-card.component";
 import ProductCardV2 from "../product-card/product-card-v2.component";
 import { chain, pluck } from "underscore";
 import "../shop/shop.styles.scss"
+import { IsExist } from "../../luan-library/check-exist-library";
 
 export const Shop = (props) => {
     const {categorySelected} = props;
@@ -16,7 +17,7 @@ export const Shop = (props) => {
     const [filteredProductsByKeyword, setFilteredProductsByKeyword] = useState([]);
 
     useEffect(() => {
-        Object.entries(products).map((item) => {
+        IsExist(products) && Object.entries(products).map((item) => {
             const category = item[0];
             const _products = item[1];
             return _products.map((product, index) => {
@@ -73,14 +74,6 @@ export const Shop = (props) => {
         : <></>
     }
 
-    // const IsExistProduct = () => {
-    //     const check = Object.keys(products).length === 0 && products.constructor === Object;
-    //     return (Object.keys(products).length === 0 && products.constructor === Object) ? false : true
-    // }
-    // const IsExist = (items) => {
-    //     const check = Object.keys(items).length === 0 && products.constructor === Object;
-    //     return (Object.keys(items).length === 0 && products.constructor === Object) ? false : true
-    // }
     return(
         <>
             <div id="product-list" className="products-container" style={{paddingTop: "85px"}}>
@@ -90,11 +83,13 @@ export const Shop = (props) => {
                     ?
                     renderProductCardByFilteredProducts(filteredProductsByKeyword)
                     :
-                    Object.entries(products).map((item) => {
+                    IsExist(products) ? Object.entries(products).map((item) => {
                         if (item[0] == categorySelected) {
                             return renderProductCard(item)
                         }
                     })
+                    :
+                    <></>
                 }
             </div>
         </>

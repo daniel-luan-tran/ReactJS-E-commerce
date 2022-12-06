@@ -7,9 +7,11 @@ import Slider from "react-slick";
 import { ProductContext } from '../../components/contexts/product.context';
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 import ProductCard from '../product-card/product-card.component';
+import { LoadingV1 } from '../loading/loading-v1.component';
+import { IsExist } from '../../luan-library/check-exist-library';
 
 const HomePage = () => {
-    const {productsArray, setProductsArray, setProducts} = useContext(ProductContext)
+    const {products, productsArray, setProductsArray, setProducts} = useContext(ProductContext)
 
     useEffect(() => {
         const getDataFromFireStore = async () => {
@@ -28,11 +30,7 @@ const HomePage = () => {
         }
         getDataFromFireStore();
     }, []);
-    const IsExist = (items) => {
-        const check = Object.keys(items).length === 0 && items.constructor === Object;
-        return (Object.keys(items).length === 0 && items.constructor === Object) ? false : true
-    }
-    
+
     const settings = {
         slidesToShow: 5,
         slidesToScroll: 1,
@@ -65,9 +63,14 @@ const HomePage = () => {
     return (
         <>
             <div style={{paddingTop: "85px"}}>
+                {                
+                // true?
+                !IsExist(productsArray) ?
+                <LoadingV1 />
+                :
                 <Slider {...settings}>
-                    {/* {IsExist(productsArray) && productsArray.map((_) => <><img style={{height: "400px", width: "280px"}} src={`${_.imageUrl}`} /></>)} */}
-                    {IsExist(productsArray) && 
+                    {
+                        //IsExist(productsArray) && 
                         productsArray.map((_, index) => {
                             return (
                                 <ProductCard key={`${_.category}-${_.id}`} product={_} index={1} category={_.category} imgSize={{width: "280px"}} />
@@ -75,9 +78,16 @@ const HomePage = () => {
                         })
                     }
                 </Slider>
-            </div>
-            <div className='homepage' style={{paddingTop: "15px"}}>
-                <Directory />
+                }
+                {
+                // true?
+                // !IsExist(products) ? 
+                // <LoadingV1 />
+                // :
+                <div className='homepage' style={{paddingTop: "15px"}}>
+                    <Directory />
+                </div>
+                }
             </div>
         </>
     )
