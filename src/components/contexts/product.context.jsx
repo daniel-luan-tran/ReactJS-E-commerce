@@ -21,7 +21,6 @@ export const ProductProvider = ({children}) => {
     const value = {products, setProducts, isShowShop, setIsShowShop, productsArray, setProductsArray};
 
     useEffect(() => {
-        //addCollectionAndDocuments("categories", SHOP_DATA);
         const getDataFromFireStore = async () => {
             const data = await getCategoriesAndDocuments();
             let arrayData = [];
@@ -31,7 +30,7 @@ export const ProductProvider = ({children}) => {
                     arrayData.push({...__, category: _[0]});
                 });
             })
-            debugger
+            
             console.log(arrayData);
             setProductsArray(arrayData);
             setProducts(data);

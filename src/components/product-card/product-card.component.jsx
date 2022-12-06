@@ -3,7 +3,7 @@ import "../product-card/product-card.styles.scss";
 import { useContext } from "react";
 import {CartContext} from '../../components/contexts/cart.context';
 
-const ProductCard = ({category, product, index}) => {
+const ProductCard = ({category, product, index, imgSize}) => {
     const {productChosen, setProductChosen, addItemToCart, cartCount} = useContext(CartContext);
     const {id, name, imageUrl, price} = product;
     console.log(productChosen);
@@ -16,7 +16,7 @@ const ProductCard = ({category, product, index}) => {
         <>
             {index == 0 && <div className="category-name text-uppercase"><h1>{category}</h1></div>}
             <div className='product-card-container'>
-                <img src={`${imageUrl}`} />
+                <img src={`${imageUrl}`} style={imgSize} />
                 <div className="footer">
                     <span className="name">{name}</span>
                     <span className="price">${price}</span>

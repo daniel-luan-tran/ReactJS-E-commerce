@@ -5,7 +5,7 @@ import Navigation from './components/navigation/navigation.component';
 import { Auth } from './components/authentication/auth.component';
 // import SignIn from './components/sign-in/sign-in.component';
 // import { SignUp } from './components/sign-up/signup.component';
-import HomePage from './pages/homepage/homepage.component';
+import HomePage from './components/homepage/homepage.component';
 import { Shop } from "./components/shop/shop.component";
 import Checkout from './components/check-out/check-out.component';
 import { ProductContext } from './components/contexts/product.context';

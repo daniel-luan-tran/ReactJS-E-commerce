@@ -39,7 +39,7 @@ export const Shop = (props) => {
     }, [productsArray])
 
     useEffect(() => {
-        debugger
+        
         var result = chain(filteredProducts)
         .groupBy('category')
         .map(function(value, key) {
@@ -51,44 +51,6 @@ export const Shop = (props) => {
         .value();
         return setFilteredProductsByKeyword(result);
     }, [filteredProducts])
-
-    // useEffect(() => {
-    //     debugger
-    //     var result = chain(filteredProducts)
-    //     .groupBy('category')
-    //     .map(function(value, key) {
-    //         return {
-    //             category: key,
-    //             data: value
-    //         }
-    //     })
-    //     .value();
-
-    //     // if(categorySelected != "" && typeof categorySelected != "undefined") {
-    //     //     result = result.filter(_ => _.category == categorySelected);
-    //     // }
-
-    //     return setFilteredProductsByKeyword(result);
-    // }, [navigation])
-
-    // useEffect(() => {
-    //     debugger
-    //     var result = chain(productsArray)
-    //     .groupBy('category')
-    //     .map(function(value, key) {
-    //         return {
-    //             category: key,
-    //             data: value
-    //         }
-    //     })
-    //     .value();
-
-    //     // if(categorySelected != "" && typeof categorySelected != "undefined") {
-    //     //     result = result.filter(_ => _.category == categorySelected);
-    //     // }
-
-    //     return setFilteredProductsByKeyword(result);
-    // }, [])
 
     const renderProductCard = (item) => { //Render with specific category
         const category = item[0];

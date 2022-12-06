@@ -9,4 +9,6 @@
 
 .category-name {
   grid-column: span 4;
+  font-family: "Brush Script MT";
+  font-weight: 600;
 }/*# sourceMappingURL=shop.styles.css.map */

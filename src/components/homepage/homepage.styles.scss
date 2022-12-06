@@ -1,0 +1,46 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 80px;
+}
+  
+.directory-menu {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.slick-slider {
+  // margin-left: 60px;
+  // margin-right: 60px;
+  margin: auto;
+  background: #f5f5f5;
+  width: 91% !important;
+  max-height: 332.5px !important;
+  overflow: hidden;
+  // margin: 30px auto 50px;
+  //padding-right: 50px;
+}
+
+.slick-prev {
+  left: 25px !important;
+  z-index: 1;
+}
+
+.slick-next {
+  right: 25px !important;
+  z-index: 1;
+}
+
+.slick-prev::before,
+.slick-next::before {
+  color: orange !important;
+  font-size: 30px !important;
+}
+
+.slick-slide {
+  height: 400px !important;
+  width: 300px !important;
+}
