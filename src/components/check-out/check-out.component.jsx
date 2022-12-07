@@ -4,7 +4,7 @@ import { MyButton } from "../button/button.component";
 import "./check-out.styles.scss";
 
 const Checkout = () => {
-    const {productChosen, setProductChosen, cartCount, setCartCount} = useContext(CartContext);
+    const {productChosen, cartCount, setCartCount, addItemToCart, DecreaseItemFromCart, setNewProductChosen} = useContext(CartContext);
 
     const totalPrice = (productChosen) => {
         return productChosen.reduce((acc, product) => {
@@ -26,22 +26,26 @@ const Checkout = () => {
                 tempArray.push(item);
             }
         });
-        _setCartCount();
+        //_setCartCount();
         return tempArray;
     }
 
     const _setItems = (product, type) => {
         return productChosen.map((item) => {
-            if (type == -1)
-                return item.id == product.id ? (item.quantity > 1 ? {...item, quantity: item.quantity+type} : {...item}) : {...item}
-            else
-                return item.id == product.id ? {...item, quantity: item.quantity+type} : {...item}
+            if (type == -1){
+                const _product = item.id == product.id ? (item.quantity > 1 ? {...item, quantity: item.quantity+type} : {...item}) : {...item}
+                return _product;
+            } else{
+                const _product = item.id == product.id ? {...item, quantity: item.quantity+type} : {...item};
+                return _product;
+            }
         });
     }
 
     const DecreaseQuantity = (product, type = -1) => {
         if(product.quantity > 1)
-            setProductChosen(_setItems(product, type));
+            DecreaseItemFromCart(_setItems(product, type)[0])
+            // setProductChosen(_setItems(product, type));
         else {
             if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
                 RemoveItem(product);
@@ -50,12 +54,14 @@ const Checkout = () => {
     }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
 
     const IncreaseQuantity = (product, type = +1) => {
-        setProductChosen(_setItems(product, type));
+        addItemToCart(_setItems(product, type)[0])
+        //setProductChosen(_setItems(product, type));
     }
 
     const RemoveItem = (product) => {
         const x = _setItemsRemoved(product);
-        setProductChosen(x);
+        setNewProductChosen(x);
+        // setProductChosen(x);
     }
     
     return(

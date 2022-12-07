@@ -5,12 +5,11 @@ import { useContext } from "react";
 import { CartContext } from "../contexts/cart.context";
 
 const CartIcon = () => {
-    var {toggleShow, setToggleShow, cartCount, productChosen, setProductChosen} = useContext(CartContext);
+    var {setToggleShow, cartCount} = useContext(CartContext);
     
     const showHideHandler = () => {
-        //setToggleShow(!toggleShow);
+        setToggleShow()
     }
-
 
     return (
         <div className="cart-icon-container" data-bs-toggle="collapse" data-bs-target="#cart-dropdown" aria-expanded="false" aria-controls="cart-dropdown" onClick={showHideHandler}>

@@ -11,7 +11,7 @@ const ProductCardV2Detail = ({item}) => {
         addItemToCart({id, name, imageUrl, price});
         console.log(productChosen);
     }
-    debugger
+    
     return(
         <>
             <div className='product-card-container'>
