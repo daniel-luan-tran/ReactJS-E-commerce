@@ -13,7 +13,7 @@ export const CategoryProvider = ({children}) => {
     useEffect(() => {
         const getDataFromFireStore = async () => {
             const data = await getCategoriesAndDocuments();
-            console.log(data);
+            
             Object.entries(data).map((item) => {
                 return setCategories([categories.push(item[0])]);
             })

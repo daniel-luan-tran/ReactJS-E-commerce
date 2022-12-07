@@ -24,7 +24,7 @@ export const ProductChosenProvider = ({children}) => {
         
         productChosen.push(product);
         setProductChosen(productChosen);
-        console.log(productChosen)
+        
     }
 
     const value = {productChosen, setProductChosen, addItemToCart};

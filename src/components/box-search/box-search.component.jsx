@@ -7,7 +7,6 @@ import { solid, regular, brands, icon } from "@fortawesome/fontawesome-svg-core/
 export const BoxSearch = () => {
     const {searchString, setSearchString} = useContext(SearchContext);
 
-    console.log(searchString);
     const onChangeHandler = (e) => {
         e.preventDefault();
         const keyword = e.target.value;

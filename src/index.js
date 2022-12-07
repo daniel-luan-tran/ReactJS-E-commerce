@@ -11,21 +11,25 @@ import { CartProvider } from './components/contexts/cart.context';
 import { NavigationProvider } from './components/contexts/navigation.context';
 import { CategoryProvider } from './components/contexts/category.context';
 import { SearchProvider } from './components/contexts/search.context';
+import {Provider} from "react-redux";
+import { store } from './store/store';
 
 ReactDOM.render(
   <React.StrictMode>
     <NavigationProvider>
-      <UserProvider>
-        <SearchProvider>
-          <ProductProvider>
-            <CategoryProvider>
-              <CartProvider>
-                <App />
-              </CartProvider>
-            </CategoryProvider>
-          </ProductProvider>
-        </SearchProvider>
-      </UserProvider>
+      <Provider store={store}>
+        {/* <UserProvider> */}
+          <SearchProvider>
+            <ProductProvider>
+              <CategoryProvider>
+                <CartProvider>
+                  <App />
+                </CartProvider>
+              </CategoryProvider>
+            </ProductProvider>
+          </SearchProvider>
+        {/* </UserProvider> */}
+      </Provider>
     </NavigationProvider>
   </React.StrictMode>,
   document.getElementById('root')

@@ -9,8 +9,26 @@ import HomePage from './components/homepage/homepage.component';
 import { Shop } from "./components/shop/shop.component";
 import Checkout from './components/check-out/check-out.component';
 import { ProductContext } from './components/contexts/product.context';
+import { createContext, useEffect, useState } from "react";
+import { auth, onAuthStateChangedHandler, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils"
+import { setCurrentUser } from './store/user/user.action';
+import { userReducer } from './store/user/user.reducer';
+import { useDispatch } from 'react-redux';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChangedHandler((_user) => {
+        if (_user) {
+            createUserDocumentFromAuth(_user);
+        }
+        dispatch(setCurrentUser(_user));
+        
+    });
+    return unsubscribe;
+  }, []);
+
   const {products} = useContext(ProductContext);
   return (
     <div>

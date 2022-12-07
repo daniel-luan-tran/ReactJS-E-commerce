@@ -44,7 +44,7 @@ const Checkout = () => {
 
     const DecreaseQuantity = (product, type = -1) => {
         if(product.quantity > 1)
-            DecreaseItemFromCart(_setItems(product, type)[0])
+            DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
             // setProductChosen(_setItems(product, type));
         else {
             if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
@@ -54,7 +54,7 @@ const Checkout = () => {
     }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
 
     const IncreaseQuantity = (product, type = +1) => {
-        addItemToCart(_setItems(product, type)[0])
+        addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
         //setProductChosen(_setItems(product, type));
     }
 

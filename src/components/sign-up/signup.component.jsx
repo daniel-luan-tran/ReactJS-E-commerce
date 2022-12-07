@@ -14,7 +14,7 @@ const defaultFormFields = {
 export const SignUp = () => {
     const [state, setStateForFormField] = useState(defaultFormFields); //defaultFormFields set defaulf value cho state => truyền destructure (*) (dòng dưới)
     const { displayname, email, password, confirmPassword } = state; //(*)
-    console.log(state);
+
     const handleChange = (e) => {
 
         const { name, value } = e.target; //sự kiên onChange => truyền vào destructure từ name và value của thẻ input
@@ -46,15 +46,12 @@ export const SignUp = () => {
             try {
                 const { user } = await createAuthUserWithEmailAndPassword(email, password);
                 //setCurrentUser(user);
-                console.log(user);
                 await createUserDocumentFromAuth(user, { displayname });
                 resetFormField();
             } catch (error) {
-
                 if (error.code == 'auth/email-already-in-use') {
                     alert('Email already in use!');
                 }
-                console.log(error);
             }
         } else {
             alert("Confirm password is not matched!");

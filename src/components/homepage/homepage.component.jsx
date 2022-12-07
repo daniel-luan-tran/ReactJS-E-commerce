@@ -24,7 +24,6 @@ const HomePage = () => {
                 });
             })
             
-            console.log(arrayData);
             setProductsArray(arrayData);
             setProducts(data);
         }

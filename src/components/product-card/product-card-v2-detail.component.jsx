@@ -6,10 +6,9 @@ import {CartContext} from '../../components/contexts/cart.context';
 const ProductCardV2Detail = ({item}) => {
     const {productChosen, setProductChosen, addItemToCart, cartCount} = useContext(CartContext);
     const {id, name, imageUrl, price} = item;
-    console.log(productChosen);
+    
     const onClickHandler = () => {
         addItemToCart({id, name, imageUrl, price});
-        console.log(productChosen);
     }
     
     return(

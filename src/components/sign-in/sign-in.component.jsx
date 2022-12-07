@@ -15,11 +15,8 @@ const SignIn = () => {
 
     //const {setCurrentUser, currentUser} = useContext(UserContext); //Hàm này của react có param là UserContext return {setCurrentUser, currentUser}
 
-    console.log(state);
-
     const logGoogleUser = async () => {
         const {user} = await signInWithGooglePopup();
-        console.log(user);
         const userDocRef = await createUserDocumentFromAuth(user);
     }
 
@@ -34,9 +31,6 @@ const SignIn = () => {
     const handleLoginSubmit = async () => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            //setCurrentUser(user);
-            //console.log(currentUser);
-            console.log(user);
             resetFormField();
         } catch (error) {
             if (error.code == 'auth/wrong-password') {
