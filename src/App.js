@@ -19,6 +19,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    debugger
     const unsubscribe = onAuthStateChangedHandler((_user) => {
         if (_user) {
             createUserDocumentFromAuth(_user);

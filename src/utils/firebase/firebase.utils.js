@@ -63,7 +63,7 @@ export const getCategoriesAndDocuments = async () => {
 };
 
 export const createUserDocumentFromAuth = async (userAuth, additionalInfo = {}) => {
-
+  debugger
   if (!userAuth) return;
   const userDocRef = doc(db, 'users', userAuth.uid);
   console.log(userDocRef);

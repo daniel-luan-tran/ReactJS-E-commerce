@@ -9,12 +9,15 @@ import "./navigation.styles.scss"
 import { CartContext } from "../contexts/cart.context";
 import Checkout from "../check-out/check-out.component"
 import { ProductContext } from "../contexts/product.context"
+import { useSelector } from "react-redux"
 
 const Navigation = () => {
-    const { currentUser, setCurrentUser } = useContext(UserContext);
+    // const { currentUser, setCurrentUser } = useContext(UserContext);
     // const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
     // const {isShowShop, setIsShowShop} = useContext(ProductContext)
 
+    const currentUser = useSelector(state => state.user.currentUser)
+  debugger
     const SignOutHandler = async () => {
       await SignOutUser(auth);
       //setCurrentUser(null);
