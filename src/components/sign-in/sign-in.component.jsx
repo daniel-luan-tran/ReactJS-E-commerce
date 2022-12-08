@@ -31,6 +31,7 @@ const SignIn = () => {
     const handleLoginSubmit = async () => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
+            
             resetFormField();
         } catch (error) {
             if (error.code == 'auth/wrong-password') {

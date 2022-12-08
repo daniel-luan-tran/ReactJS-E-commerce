@@ -13,34 +13,37 @@ import { createContext, useEffect, useState } from "react";
 import { auth, onAuthStateChangedHandler, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils"
 import { setCurrentUser } from './store/user/user.action';
 import { userReducer } from './store/user/user.reducer';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { IsExist } from './luan-library/check-exist-library';
 
 function App() {
+  const {products} = useContext(ProductContext);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    debugger
     const unsubscribe = onAuthStateChangedHandler((_user) => {
         if (_user) {
-            createUserDocumentFromAuth(_user);
+            const x =createUserDocumentFromAuth(_user);
         }
         dispatch(setCurrentUser(_user));
         
     });
+    
     return unsubscribe;
   }, []);
-
-  const {products} = useContext(ProductContext);
+  const currentUser = useSelector((state) => {
+    return state.user.currentUser
+  })
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Navigation/>}>
+          <Route path="/" element={<Navigation user={currentUser} />}>
             <Route index element={<HomePage/>} />
             <Route path="shop" element={<Shop/>} />
             <Route path="auth" element={<Auth/>} />
             {
-              !(Object.keys(products).length === 0 && products.constructor === Object) &&
+              IsExist(products) &&
               Object.entries(products).map((item) => {
                   const category = item[0];
                   return <Route key={category} path={`shop/${category}`} element={<Shop categorySelected={category} />} />

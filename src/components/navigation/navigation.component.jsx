@@ -1,23 +1,23 @@
 import { Link, Outlet, useLocation } from "react-router-dom"
-import { Fragment, useContext } from "react"
+import { Fragment, useContext, useEffect } from "react"
 import { UserContext, UserProvider } from "../contexts/user.context"
 import{ ReactComponent as CrownLogo } from '../../assets/crown.svg'
-import {SignOutUser, auth} from '../../utils/firebase/firebase.utils'
+import {SignOutUser, auth, onAuthStateChangedHandler, createUserDocumentFromAuth} from '../../utils/firebase/firebase.utils'
 import CartIcon from "../cart-icon/cart-icon.component"
 import CartDropDown from "../cart-dropdown/cart-dropdown.component"
 import "./navigation.styles.scss"
 import { CartContext } from "../contexts/cart.context";
 import Checkout from "../check-out/check-out.component"
 import { ProductContext } from "../contexts/product.context"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { setCurrentUser } from "../../store/user/user.action"
 
-const Navigation = () => {
+const Navigation = ({user}) => {
     // const { currentUser, setCurrentUser } = useContext(UserContext);
     // const { toggleShow, productChosen, setProductChosen } = useContext(CartContext);
     // const {isShowShop, setIsShowShop} = useContext(ProductContext)
 
-    const currentUser = useSelector(state => state.user.currentUser)
-  debugger
+    const currentUser = user
     const SignOutHandler = async () => {
       await SignOutUser(auth);
       //setCurrentUser(null);
