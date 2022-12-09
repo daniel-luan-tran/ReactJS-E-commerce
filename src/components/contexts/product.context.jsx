@@ -31,7 +31,6 @@ export const ProductProvider = ({children}) => {
                 });
             })
             
-            console.log(arrayData);
             setProductsArray(arrayData);
             setProducts(data);
         }

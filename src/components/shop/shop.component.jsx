@@ -9,6 +9,7 @@ import "../shop/shop.styles.scss"
 import { IsExist } from "../../luan-library/check-exist-library";
 
 export const Shop = (props) => {
+    debugger
     const {categorySelected} = props;
     const {productsArray, setProductsArray} = useContext(ProductContext);
     const {products, setProducts} = useContext(ProductContext);

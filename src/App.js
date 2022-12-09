@@ -10,11 +10,12 @@ import { Shop } from "./components/shop/shop.component";
 import Checkout from './components/check-out/check-out.component';
 import { ProductContext } from './components/contexts/product.context';
 import { createContext, useEffect, useState } from "react";
-import { auth, onAuthStateChangedHandler, createUserDocumentFromAuth } from "./utils/firebase/firebase.utils"
+import { auth, onAuthStateChangedHandler, createUserDocumentFromAuth, getCategoriesAndDocuments } from "./utils/firebase/firebase.utils"
 import { setCurrentUser } from './store/user/user.action';
 import { userReducer } from './store/user/user.reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { IsExist } from './luan-library/check-exist-library';
+import { setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
 
 function App() {
   const {products} = useContext(ProductContext);
@@ -26,7 +27,6 @@ function App() {
             const x =createUserDocumentFromAuth(_user);
         }
         dispatch(setCurrentUser(_user));
-        
     });
     
     return unsubscribe;
@@ -34,17 +34,42 @@ function App() {
   const currentUser = useSelector((state) => {
     return state.user.currentUser
   })
+
+  useEffect(() => {
+      const getDataFromFireStore = async () => {
+          const data = await getCategoriesAndDocuments();
+          let arrayData = [];
+
+          Object.entries(data).map((_) => {
+              _[1].map((__) => {
+                  arrayData.push({...__, category: _[0]});
+              });
+          })
+          
+          // setProductsArray(arrayData);
+          dispatch(setCurrentProduct(data));
+          dispatch(setCurrentProductArray(arrayData));
+      }
+      getDataFromFireStore();
+  }, []);
+  const currentProduct = useSelector((state) => {
+    return state.product.currentProduct
+  })
+  const currentProductArray = useSelector((state) => {
+    return state.product.currentProductArray
+  })
+
   return (
     <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigation user={currentUser} />}>
             <Route index element={<HomePage/>} />
-            <Route path="shop" element={<Shop/>} />
+            <Route path="shop" element={<Shop product={currentProductArray} />} />
             <Route path="auth" element={<Auth/>} />
             {
-              IsExist(products) &&
-              Object.entries(products).map((item) => {
+              IsExist(currentProduct) &&
+              Object.entries(currentProduct).map((item) => {
                   const category = item[0];
                   return <Route key={category} path={`shop/${category}`} element={<Shop categorySelected={category} />} />
               })
