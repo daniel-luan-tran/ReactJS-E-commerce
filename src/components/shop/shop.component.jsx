@@ -11,24 +11,48 @@ import { IsExist } from "../../luan-library/check-exist-library";
 export const Shop = (props) => {
     debugger
     const {categorySelected} = props;
-    const {productsArray, setProductsArray} = useContext(ProductContext);
-    const {products, setProducts} = useContext(ProductContext);
+    // const {productsArray, setProductsArray} = useContext(ProductContext);
+    // const {products, setProducts} = useContext(ProductContext);
+    const {currentProduct, currentProductArray} = props
     const {searchString} = useContext(SearchContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [filteredProductsByKeyword, setFilteredProductsByKeyword] = useState([]);
 
+    // useEffect(() => {
+    //     IsExist(products) && Object.entries(products).map((item) => {
+    //         const category = item[0];
+    //         const _products = item[1];
+    //         return _products.map((product, index) => {
+    //             return setFilteredProducts(productsArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
+    //         })
+    //     })
+    // }, [searchString])
+
     useEffect(() => {
-        IsExist(products) && Object.entries(products).map((item) => {
+        IsExist(currentProduct) && Object.entries(currentProduct).map((item) => {
             const category = item[0];
             const _products = item[1];
             return _products.map((product, index) => {
-                return setFilteredProducts(productsArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
+                return setFilteredProducts(currentProductArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
             })
         })
     }, [searchString])
 
+    // useEffect(() => {
+    //     var result = chain(productsArray)
+    //     .groupBy('category')
+    //     .map(function(value, key) {
+    //         return {
+    //             category: key,
+    //             data: value
+    //         }
+    //     })
+    //     .value();
+    //     return setFilteredProductsByKeyword(result);
+    // }, [productsArray])
+
     useEffect(() => {
-        var result = chain(productsArray)
+        var result = chain(currentProductArray)
         .groupBy('category')
         .map(function(value, key) {
             return {
@@ -38,7 +62,21 @@ export const Shop = (props) => {
         })
         .value();
         return setFilteredProductsByKeyword(result);
-    }, [productsArray])
+    }, [currentProductArray])
+
+    // useEffect(() => {
+        
+    //     var result = chain(filteredProducts)
+    //     .groupBy('category')
+    //     .map(function(value, key) {
+    //         return {
+    //             category: key,
+    //             data: value
+    //         }
+    //     })
+    //     .value();
+    //     return setFilteredProductsByKeyword(result);
+    // }, [filteredProducts])
 
     useEffect(() => {
         
@@ -84,7 +122,8 @@ export const Shop = (props) => {
                     ?
                     renderProductCardByFilteredProducts(filteredProductsByKeyword)
                     :
-                    IsExist(products) ? Object.entries(products).map((item) => {
+                    // IsExist(products) ? Object.entries(products).map((item) => {
+                    IsExist(currentProduct) ? Object.entries(currentProduct).map((item) => {
                         if (item[0] == categorySelected) {
                             return renderProductCard(item)
                         }

@@ -65,13 +65,13 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigation user={currentUser} />}>
             <Route index element={<HomePage/>} />
-            <Route path="shop" element={<Shop product={currentProductArray} />} />
+            <Route path="shop" element={<Shop currentProductArray={currentProductArray} currentProduct={currentProduct} />} />
             <Route path="auth" element={<Auth/>} />
             {
               IsExist(currentProduct) &&
               Object.entries(currentProduct).map((item) => {
                   const category = item[0];
-                  return <Route key={category} path={`shop/${category}`} element={<Shop categorySelected={category} />} />
+                  return <Route key={category} path={`shop/${category}`} element={<Shop categorySelected={category} currentProductArray={currentProductArray} currentProduct={currentProduct} />} />
               })
             }
             <Route path="checkout" element={<Checkout/>} />
