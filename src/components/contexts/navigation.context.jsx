@@ -9,6 +9,8 @@ export const NavigationContext = createContext(
 
 //Truyền dữ liệu vào context
 export const NavigationProvider = ({children}) => {
+    window.history.pushState({}, '', window.location.href);
+    console.log(window.location.href);
     let location = window.location.href;
     const [navigation, setNavigation] = useState(location);
     const value = {navigation, setNavigation};

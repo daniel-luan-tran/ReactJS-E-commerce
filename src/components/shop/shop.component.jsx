@@ -9,7 +9,6 @@ import "../shop/shop.styles.scss"
 import { IsExist } from "../../luan-library/check-exist-library";
 
 export const Shop = (props) => {
-    debugger
     const {categorySelected} = props;
     // const {productsArray, setProductsArray} = useContext(ProductContext);
     // const {products, setProducts} = useContext(ProductContext);
@@ -33,7 +32,7 @@ export const Shop = (props) => {
             const category = item[0];
             const _products = item[1];
             return _products.map((product, index) => {
-                return setFilteredProducts(currentProductArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
+                return setFilteredProducts(currentProductArray && currentProductArray.filter((_) => _.name.toLowerCase().includes(searchString.toLowerCase())));
             })
         })
     }, [searchString])
