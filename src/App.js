@@ -16,6 +16,7 @@ import { userReducer } from './store/user/user.reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { IsExist } from './luan-library/check-exist-library';
 import { setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
+import { setCurrentNavigation } from './store/navigation/navigation.action';
 
 function App() {
   const {products} = useContext(ProductContext);

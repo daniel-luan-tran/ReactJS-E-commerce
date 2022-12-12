@@ -11,6 +11,7 @@ import Checkout from "../check-out/check-out.component"
 import { ProductContext } from "../contexts/product.context"
 import { useDispatch, useSelector } from "react-redux"
 import { setCurrentUser } from "../../store/user/user.action"
+import { setCurrentNavigation } from "../../store/navigation/navigation.action"
 
 const Navigation = ({user}) => {
     // const { currentUser, setCurrentUser } = useContext(UserContext);
