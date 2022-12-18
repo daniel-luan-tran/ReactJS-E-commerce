@@ -15,8 +15,9 @@ import { setCurrentUser } from './store/user/user.action';
 import { userReducer } from './store/user/user.reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { IsExist } from './luan-library/check-exist-library';
-import { setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
+import { setCategoryMap, setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
 import { setCurrentNavigation } from './store/navigation/navigation.action';
+import { selectCategoryMap } from './store/product/product.selector';
 
 function App() {
   const {products} = useContext(ProductContext);
@@ -38,17 +39,14 @@ function App() {
 
   useEffect(() => {
       const getDataFromFireStore = async () => {
-          const data = await getCategoriesAndDocuments();
+          const categoryMap = await getCategoriesAndDocuments();
           let arrayData = [];
-
-          Object.entries(data).map((_) => {
+          Object.entries(categoryMap).map((_) => {
               _[1].map((__) => {
                   arrayData.push({...__, category: _[0]});
               });
           })
-          
-          // setProductsArray(arrayData);
-          dispatch(setCurrentProduct(data));
+          dispatch(setCurrentProduct(categoryMap));
           dispatch(setCurrentProductArray(arrayData));
       }
       getDataFromFireStore();
@@ -65,7 +63,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Navigation user={currentUser} />}>
-            <Route index element={<HomePage/>} />
+            <Route index element={<HomePage currentProductArray={currentProductArray} />} />
             <Route path="shop" element={<Shop currentProductArray={currentProductArray} currentProduct={currentProduct} />} />
             <Route path="auth" element={<Auth/>} />
             {

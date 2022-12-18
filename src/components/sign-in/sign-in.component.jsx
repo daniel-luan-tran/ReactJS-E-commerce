@@ -72,10 +72,10 @@ const SignIn = () => {
                         handleLoginSubmit();
                     }}>
                         <div className="mb-3">
-                            <Input typeName={'email'} inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
+                            <Input typeName={'email'} inputId='InputEmailSignIn' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                         </div>
                         <div className="mb-3">
-                            <Input typeName={'password'} inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                            <Input typeName={'password'} inputId='InputPasswordSignIn' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
                         </div>
                         <div className="row" style={{justifyContent: 'space-between'}}>
                             <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Sign in'} buttonType={'default'} typeName='submit' /></div>

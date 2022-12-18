@@ -9,9 +9,9 @@ const ProductCardV2 = ({category, product}) => {
         <>
             <div className="category-name text-uppercase"><h1>{category}</h1></div>
             {
-            product.map((item) => {
+            product.map((item, index) => {
                 return (
-                    <ProductCardV2Detail item={item} />
+                    <ProductCardV2Detail key={index} item={item} />
                 )
             })
             }

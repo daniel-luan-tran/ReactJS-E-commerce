@@ -4,12 +4,12 @@ export const PRODUCT_ACTION_TYPES = {
   };
   
   export const PRODUCT_INITIAL_STATE = {
-      currentProduct: null,
+      currentProduct: null, currentProduct: []
     };
     
     export const productReducer = (state = PRODUCT_INITIAL_STATE, action = {}) => {
       const { type, payload } = action;
-    
+
       switch (type) {
         case PRODUCT_ACTION_TYPES.SET_CURRENT_PRODUCT:
           return { ...state, currentProduct: payload };

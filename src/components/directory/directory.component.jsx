@@ -4,9 +4,13 @@ import './directory.styles.scss';
 import { ProductContext } from '../contexts/product.context';
 import { IsExist } from '../../luan-library/check-exist-library';
 import { LoadingV2 } from '../loading/loading-v2.component';
+import { useSelector } from 'react-redux';
 
 const Directory = () => {
-    const {products} = useContext(ProductContext);
+    const products = useSelector((state) => {
+        return state.product.currentProduct
+    });
+    //const {products} = useContext(ProductContext);
     return (
         <div className='directory-menu'>
         {

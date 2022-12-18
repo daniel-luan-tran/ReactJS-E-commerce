@@ -10,33 +10,37 @@ import ProductCard from '../product-card/product-card.component';
 import { LoadingV1 } from '../loading/loading-v1.component';
 import { IsExist } from '../../luan-library/check-exist-library';
 
-const HomePage = () => {
-    const {products, productsArray, setProductsArray, setProducts} = useContext(ProductContext)
+const HomePage = (props) => {
+    const {currentProductArray} = props;
+    // const {products, productsArray, setProductsArray, setProducts} = useContext(ProductContext)
+    // useEffect(() => {
+    //     const getDataFromFireStore = async () => {
+    //         const data = await getCategoriesAndDocuments();
+    //         let arrayData = [];
 
-    useEffect(() => {
-        const getDataFromFireStore = async () => {
-            const data = await getCategoriesAndDocuments();
-            let arrayData = [];
-
-            Object.entries(data).map((_) => {
-                _[1].map((__) => {
-                    arrayData.push({...__, category: _[0]});
-                });
-            })
+    //         Object.entries(data).map((_) => {
+    //             _[1].map((__) => {
+    //                 arrayData.push({...__, category: _[0]});
+    //             });
+    //         })
             
-            setProductsArray(arrayData);
-            setProducts(data);
-        }
-        getDataFromFireStore();
-    }, []);
+    //         setProductsArray(arrayData);
+    //         setProducts(data);
+    //     }
+    //     getDataFromFireStore();
+    // }, []);
 
     const settings = {
         slidesToShow: 5,
-        slidesToScroll: 1,
+        // slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000,
         //dots: true,
-        centerMode: true,
+        // centerMode: true,
+        className: "center",
+        swipeToSlide: true,
+        // touchThreshold: 100,
+        infinite: true,
         responsive: [
             {
               breakpoint: 768,
@@ -62,15 +66,13 @@ const HomePage = () => {
     return (
         <>
             <div style={{paddingTop: "85px"}}>
-                {                
-                // true?
-                !IsExist(productsArray) ?
+                {              
+                !IsExist(currentProductArray) ?
                 <LoadingV1 />
                 :
                 <Slider {...settings}>
                     {
-                        //IsExist(productsArray) && 
-                        productsArray.map((_, index) => {
+                        currentProductArray.map((_, index) => {
                             return (
                                 <ProductCard key={`${_.category}-${_.id}`} product={_} index={1} category={_.category} imgSize={{width: "280px"}} />
                             )
@@ -79,10 +81,6 @@ const HomePage = () => {
                 </Slider>
                 }
                 {
-                // true?
-                // !IsExist(products) ? 
-                // <LoadingV1 />
-                // :
                 <div className='homepage' style={{paddingTop: "15px"}}>
                     <Directory />
                 </div>

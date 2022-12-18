@@ -70,10 +70,10 @@ export const SignUp = () => {
                         <Input typeName='text' inputId='InputName' labelName='Your name' inputName='displayname' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
-                        <Input typeName='email' inputId='InputEmail' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
+                        <Input typeName='email' inputId='InputEmailSignUp' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                     </div>
                     <div className="mb-3">
-                    <Input typeName='password' inputId='InputPassword' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                    <Input typeName='password' inputId='InputPasswordSignUp' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
                     <Input typeName='password' inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
