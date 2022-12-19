@@ -2,21 +2,23 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/cart.context";
 import { MyButton } from "../button/button.component";
 import "./check-out.styles.scss";
+import { useSelector } from "react-redux";
+import { addItemToCart, DecreaseItemFromCart, selectCartItemsReducer, setNewProductChosen } from "../../store/cart/cart.selector";
 
 const Checkout = () => {
-    const {productChosen, cartCount, setCartCount, addItemToCart, DecreaseItemFromCart, setNewProductChosen} = useContext(CartContext);
+    // const {productChosen, cartCount, setCartCount, addItemToCart, DecreaseItemFromCart, setNewProductChosen} = useContext(CartContext);
+    ///
+    const productChosen = useSelector(selectCartItemsReducer);
+    const cartCount = useSelector((state) => {
+        return state.cart.cartCount;
+    });
+    ///
 
     const totalPrice = (productChosen) => {
         return productChosen.reduce((acc, product) => {
             let rs = acc + (product.quantity * product.price)
             return rs
         }, 0);
-    }
-
-    const _setCartCount = () => {
-        let count = cartCount;
-        count--;
-        setCartCount(count);
     }
 
     const _setItemsRemoved = (product) => {
@@ -26,7 +28,6 @@ const Checkout = () => {
                 tempArray.push(item);
             }
         });
-        //_setCartCount();
         return tempArray;
     }
 
@@ -42,27 +43,48 @@ const Checkout = () => {
         });
     }
 
+    // const DecreaseQuantity = (product, type = -1) => {
+    //     if(product.quantity > 1)
+    //         DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
+    //     else {
+    //         if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
+    //             RemoveItem(product);
+    //         } else {}
+    //     }
+    // }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
+    ///
     const DecreaseQuantity = (product, type = -1) => {
-        if(product.quantity > 1)
+        if(product.quantity > 1) {
+            // useSelector(DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0]));
             DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
-            // setProductChosen(_setItems(product, type));
-        else {
+        } else {
             if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
                 RemoveItem(product);
             } else {}
         }
     }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
+    ///
 
+    // const IncreaseQuantity = (product, type = +1) => {
+    //     addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0]);
+    // }
+    //
     const IncreaseQuantity = (product, type = +1) => {
+        // useSelector(addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0]));
         addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
-        //setProductChosen(_setItems(product, type));
     }
+    //
 
+    // const RemoveItem = (product) => {
+    //     const x = _setItemsRemoved(product);
+    //     setNewProductChosen(x);
+    // }
+    ///
     const RemoveItem = (product) => {
         const x = _setItemsRemoved(product);
-        setNewProductChosen(x);
-        // setProductChosen(x);
+        useSelector(setNewProductChosen(x));
     }
+    ///
     
     return(
         <div className="" style={{paddingTop: "85px", maxWidth: "70%", margin: "auto"}}>

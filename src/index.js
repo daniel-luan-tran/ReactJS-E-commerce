@@ -22,9 +22,9 @@ ReactDOM.render(
           <SearchProvider>
             <ProductProvider>
               <CategoryProvider>
-                <CartProvider>
+                {/* <CartProvider> */}
                   <App />
-                </CartProvider>
+                {/* </CartProvider> */}
               </CategoryProvider>
             </ProductProvider>
           </SearchProvider>

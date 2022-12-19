@@ -7,17 +7,16 @@ import { useNavigate } from "react-router-dom";
 // import { NavigationContext } from "../contexts/navigation.context";
 import { setCurrentNavigation } from "../../store/navigation/navigation.action";
 import { useDispatch, useSelector } from "react-redux";
+import { selectCartItems, selectCartItemsReducer, updateCartCountReducer } from "../../store/cart/cart.selector";
+import { setCurrentCartCount, setCurrentCartItems } from "../../store/cart/cart.action";
 
 const CartDropDown = () => {
-    var {productChosen} = useContext(CartContext);
-    // const {navigation, setNavigation} = useContext(NavigationContext);
-    // const location = window.location.href;
-    // setNavigation(location);
+    // const {productChosen} = useContext(CartContext);
     const dispatch = useDispatch();
-
+    debugger
+    const productChosen = useSelector(selectCartItemsReducer);
+    
     useEffect(() => {
-        window.history.pushState({}, '', window.location.href);
-        console.log(window.location.href);
         const location = window.location.href;
         dispatch(setCurrentNavigation(location));
     }, [window.location.href]);
@@ -33,6 +32,7 @@ const CartDropDown = () => {
     const navigateCheckoutHandler = () => {
         navigate("/checkout");
     }
+    
     return (
         <div id="cart-dropdown" className="cart-dropdown-container collapse">
             <CartProductList productChosen={productChosen} />

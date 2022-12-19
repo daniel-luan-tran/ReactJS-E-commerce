@@ -18,6 +18,7 @@ import { IsExist } from './luan-library/check-exist-library';
 import { setCategoryMap, setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
 import { setCurrentNavigation } from './store/navigation/navigation.action';
 import { selectCategoryMap } from './store/product/product.selector';
+import { setCurrentCartCount, setCurrentCartItems } from './store/cart/cart.action';
 
 function App() {
   const {products} = useContext(ProductContext);
@@ -57,7 +58,7 @@ function App() {
   const currentProductArray = useSelector((state) => {
     return state.product.currentProductArray
   })
-
+  
   return (
     <div>
       <BrowserRouter>

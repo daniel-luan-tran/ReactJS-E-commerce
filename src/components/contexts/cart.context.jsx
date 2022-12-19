@@ -49,11 +49,6 @@ const cartReducer = (state, action) => {
 };
 
 export const CartProvider = ({children}) => {
-    
-    // const [toggleShow, setToggleShow] = useState(false);
-    // const [productChosen, setProductChosen] = useState([]);
-    // const [cartCount, setCartCount] = useState(0);
-
     const [{cartCount, productChosen, toggleShow}, dispatch] = useReducer(cartReducer, INITIAL_STATE);
 
     const checkExistProduct = (_product) => {
@@ -155,8 +150,7 @@ export const CartProvider = ({children}) => {
     const setToggleShow = () => {
         setCartShowReducer();
     }
-    
-    // const value = {productChosen, setProductChosen, addItemToCart, toggleShow, setToggleShow, cartCount, setCartCount};
+
     const value = {productChosen, addItemToCart, DecreaseItemFromCart, setNewProductChosen, toggleShow, setToggleShow, cartCount};
 
     return (
