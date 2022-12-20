@@ -12,23 +12,6 @@ import { IsExist } from '../../luan-library/check-exist-library';
 
 const HomePage = (props) => {
     const {currentProductArray} = props;
-    // const {products, productsArray, setProductsArray, setProducts} = useContext(ProductContext)
-    // useEffect(() => {
-    //     const getDataFromFireStore = async () => {
-    //         const data = await getCategoriesAndDocuments();
-    //         let arrayData = [];
-
-    //         Object.entries(data).map((_) => {
-    //             _[1].map((__) => {
-    //                 arrayData.push({...__, category: _[0]});
-    //             });
-    //         })
-            
-    //         setProductsArray(arrayData);
-    //         setProducts(data);
-    //     }
-    //     getDataFromFireStore();
-    // }, []);
 
     const settings = {
         slidesToShow: 5,

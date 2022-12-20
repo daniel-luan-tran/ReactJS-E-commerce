@@ -1,9 +1,14 @@
 import { setCurrentCartCount, setCurrentCartItems } from "./cart.action";
 import {createSelector} from "reselect";
+import { useSelector } from "react-redux";
 
 export const selectCartItemsReducer = (state) => {
     return state.cart.productChosen;
 };
+
+export const getCurrentCartCount = (state) => {
+    return state.cart.cartCount;
+}
 
 // const updateCartReducer = createSelector([selectCartItemsReducer], (productChosen) => {
 //     debugger
@@ -11,11 +16,21 @@ export const selectCartItemsReducer = (state) => {
 // })
 
 const updateCartReducer = (productChosen) => {
-    return productChosen;
+    const payload = {
+        cartCount: productChosen.length,
+        productChosen: productChosen
+    }
+    debugger
+    return payload;
 }
 
+// export const updateCartCountReducer = (productChosen) => {
+//     return productChosen.length;
+// }
+
 export const updateCartCountReducer = createSelector([updateCartReducer], (productChosen) => {
-    //return productChosen.length;
+    debugger
+    return productChosen ? productChosen.length : 0;
 });
 
 const checkExistProduct = (_product, productChosen) => {

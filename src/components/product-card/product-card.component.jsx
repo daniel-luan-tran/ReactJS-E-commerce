@@ -4,7 +4,7 @@ import { useContext } from "react";
 import {CartContext} from '../../components/contexts/cart.context';
 import { addItemToCart, selectCartItemsReducer } from "../../store/cart/cart.selector";
 import { useDispatch, useSelector } from "react-redux";
-import { addItemToCartAction } from "../../store/cart/cart.action";
+import { addItemToCartAction, setCurrentCartCount } from "../../store/cart/cart.action";
 
 const ProductCard = ({category, product, index, imgSize}) => {
     // const {addItemToCart} = useContext(CartContext);
@@ -12,7 +12,9 @@ const ProductCard = ({category, product, index, imgSize}) => {
     const productChosen = useSelector(selectCartItemsReducer);
     const dispatch = useDispatch();
     const onClickHandler = () => {
+        debugger
         dispatch(addItemToCartAction(product, productChosen));
+        // dispatch(setCurrentCartCount(productChosen));
     }
     
     return(

@@ -8,12 +8,12 @@ import { useNavigate } from "react-router-dom";
 import { setCurrentNavigation } from "../../store/navigation/navigation.action";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCartItems, selectCartItemsReducer, updateCartCountReducer } from "../../store/cart/cart.selector";
-import { setCurrentCartCount, setCurrentCartItems } from "../../store/cart/cart.action";
+import { setCurrentCartCount } from "../../store/cart/cart.action";
 
 const CartDropDown = () => {
     // const {productChosen} = useContext(CartContext);
     const dispatch = useDispatch();
-    debugger
+    
     const productChosen = useSelector(selectCartItemsReducer);
     
     useEffect(() => {
