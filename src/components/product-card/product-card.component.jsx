@@ -12,7 +12,6 @@ const ProductCard = ({category, product, index, imgSize}) => {
     const productChosen = useSelector(selectCartItemsReducer);
     const dispatch = useDispatch();
     const onClickHandler = () => {
-        debugger
         dispatch(addItemToCartAction(product, productChosen));
         // dispatch(setCurrentCartCount(productChosen));
     }

@@ -10,17 +10,11 @@ export const getCurrentCartCount = (state) => {
     return state.cart.cartCount;
 }
 
-// const updateCartReducer = createSelector([selectCartItemsReducer], (productChosen) => {
-//     debugger
-//     return productChosen;
-// })
-
 const updateCartReducer = (productChosen) => {
     const payload = {
         cartCount: productChosen.length,
         productChosen: productChosen
     }
-    debugger
     return payload;
 }
 
@@ -29,7 +23,6 @@ const updateCartReducer = (productChosen) => {
 // }
 
 export const updateCartCountReducer = createSelector([updateCartReducer], (productChosen) => {
-    debugger
     return productChosen ? productChosen.length : 0;
 });
 
@@ -72,10 +65,10 @@ const setDecreaseItem = (_product, productChosen) => {
 
     if (checkExistProduct(_product, productChosen)) {
         var newProduct = productChosen;
-        updateCartReducer(setQuantity(newProduct));
+        return updateCartReducer(setQuantity(newProduct));
     } else {
         const newProduct = [...productChosen, _product];
-        updateCartReducer(newProduct);
+        return updateCartReducer(newProduct);
     }
     //////
 }
@@ -113,5 +106,5 @@ export const DecreaseItemFromCart = (product, productChosen) => {
     _product.price = product.price;
     _product.imageUrl = product.imageUrl;
     _product.quantity = product.quantity;
-    setDecreaseItem(_product, productChosen);
+    return setDecreaseItem(_product, productChosen);
 }

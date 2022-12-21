@@ -20,7 +20,6 @@ export const setCurrentCartItems = (cartItems) => {
     return createAction(CART_ACTION_TYPES.SET_CART_ITEMS, cartItems);
 }
 export const setCurrentCartCount = (productChosen) => {
-    debugger
     const newCartCount = updateCartCountReducer(productChosen);
     return createAction(CART_ACTION_TYPES.SET_CART_COUNT, newCartCount);
 }

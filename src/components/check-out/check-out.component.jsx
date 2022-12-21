@@ -2,18 +2,13 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../contexts/cart.context";
 import { MyButton } from "../button/button.component";
 import "./check-out.styles.scss";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart, DecreaseItemFromCart, selectCartItemsReducer, setNewProductChosen } from "../../store/cart/cart.selector";
+import { addItemToCartAction, DecreaseItemFromCartAcion, setNewProductChosenAction } from "../../store/cart/cart.action";
 
 const Checkout = () => {
-    // const {productChosen, cartCount, setCartCount, addItemToCart, DecreaseItemFromCart, setNewProductChosen} = useContext(CartContext);
-    ///
     const productChosen = useSelector(selectCartItemsReducer);
-    const cartCount = useSelector((state) => {
-        return state.cart.cartCount;
-    });
-    ///
-
+    const dispatch = useDispatch();
     const totalPrice = (productChosen) => {
         return productChosen.reduce((acc, product) => {
             let rs = acc + (product.quantity * product.price)
@@ -43,48 +38,26 @@ const Checkout = () => {
         });
     }
 
-    // const DecreaseQuantity = (product, type = -1) => {
-    //     if(product.quantity > 1)
-    //         DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
-    //     else {
-    //         if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
-    //             RemoveItem(product);
-    //         } else {}
-    //     }
-    // }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
-    ///
     const DecreaseQuantity = (product, type = -1) => {
         if(product.quantity > 1) {
-            // useSelector(DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0]));
-            DecreaseItemFromCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
+            const productToDecreased = _setItems(product, type).filter(_ => _.id == product.id)[0];
+            dispatch(DecreaseItemFromCartAcion(productToDecreased, productChosen))
         } else {
             if(window.confirm("Only 1 this item left in your cart. Do you want to remove it?")) {
                 RemoveItem(product);
             } else {}
         }
     }// Nếu quantity giảm xuống 0 thì gọi hàm RemoveItem()
-    ///
 
-    // const IncreaseQuantity = (product, type = +1) => {
-    //     addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0]);
-    // }
-    //
     const IncreaseQuantity = (product, type = +1) => {
-        // useSelector(addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0]));
-        addItemToCart(_setItems(product, type).filter(_ => _.id == product.id)[0])
+        const productToIncreased = _setItems(product, type).filter(_ => _.id == product.id)[0];
+        dispatch(addItemToCartAction(productToIncreased, productChosen))
     }
-    //
 
-    // const RemoveItem = (product) => {
-    //     const x = _setItemsRemoved(product);
-    //     setNewProductChosen(x);
-    // }
-    ///
     const RemoveItem = (product) => {
-        const x = _setItemsRemoved(product);
-        useSelector(setNewProductChosen(x));
+        const productDeleted = _setItemsRemoved(product);
+        dispatch(setNewProductChosenAction(productDeleted));
     }
-    ///
     
     return(
         <div className="" style={{paddingTop: "85px", maxWidth: "70%", margin: "auto"}}>
@@ -124,8 +97,6 @@ const Checkout = () => {
             }
             <div className="row justify-content-center py-3 border-bottom">
                 <div className="col-lg-9 d-flex justify-content-center align-items-center"></div>
-                {/* <div className="col-lg-3 d-flex justify-content-center align-items-center">Description</div>
-                <div className="col-lg-3 d-flex justify-content-center align-items-center">Quantity</div> */}
                 <div className="col-lg-2 d-flex justify-content-end align-items-center fw-bold">TotalPrice</div>
                 <div className="col-lg-1 d-flex justify-content-center align-items-center fw-bold">{totalPrice(productChosen)}</div>
             </div>
