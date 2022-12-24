@@ -12,23 +12,27 @@ import { NavigationProvider } from './components/contexts/navigation.context';
 import { CategoryProvider } from './components/contexts/category.context';
 import { SearchProvider } from './components/contexts/search.context';
 import {Provider} from "react-redux";
-import { store } from './store/store';
+import { store, persistor } from './store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import { LoadingV3 } from './components/loading/loading-v3.component';
 
 ReactDOM.render(
   <React.StrictMode>
     <NavigationProvider>
       <Provider store={store}>
+        <PersistGate loading={<LoadingV3/>} persistor={persistor}>
         {/* <UserProvider> */}
-          <SearchProvider>
-            <ProductProvider>
-              <CategoryProvider>
+          {/* <SearchProvider> */}
+            {/* <ProductProvider> */}
+              {/* <CategoryProvider> */}
                 {/* <CartProvider> */}
                   <App />
                 {/* </CartProvider> */}
-              </CategoryProvider>
-            </ProductProvider>
-          </SearchProvider>
+              {/* </CategoryProvider> */}
+            {/* </ProductProvider> */}
+          {/* </SearchProvider> */}
         {/* </UserProvider> */}
+        </PersistGate>
       </Provider>
     </NavigationProvider>
   </React.StrictMode>,
