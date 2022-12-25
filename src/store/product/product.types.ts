@@ -1,0 +1,18 @@
+export enum PRODUCT_ACTION_TYPES {
+    SET_CURRENT_PRODUCT = 'SET_CURRENT_PRODUCT',
+    SET_CURRENT_PRODUCT_ARRAY = 'SET_CURRENT_PRODUCT_ARRAY',
+    FETCH_PRODUCT_START = 'FETCH_PRODUCT_START',
+    FETCH_PRODUCT_SUCCESS = 'FETCH_PRODUCT_SUCCESS',
+    FETCH_PRODUCT_FAILED ='FETCH_PRODUCT_FAILED',
+};
+
+export type Product = {
+    id: string,
+    imageUrl: string,
+    name: string,
+    price: number,
+}
+
+export type productArray = {
+    items: Product[]
+}

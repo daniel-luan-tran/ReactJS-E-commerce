@@ -1,5 +1,6 @@
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
-import { fetchProductFailed, fetchProductStart, fetchProductSuccess } from "./product.action";
+// import { fetchProductFailed, fetchProductStart, fetchProductSuccess } from "./product.action";
+import { ProductAction } from "./product.action";
 
 const dispatchAsync = async (dispatch) => {
     dispatch(fetchProductStart());
