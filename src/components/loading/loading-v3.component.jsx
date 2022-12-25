@@ -6,15 +6,14 @@ import '../menu-item/menu-item.styles.scss';
 export const LoadingV3 = () => {
     return (
         <>
-        <h1>HELLO</h1>
-        {/* <div style={{paddingTop: "85px"}}>
+        <div style={{paddingTop: "85px"}}>
             <LoadingV1 />
             <div className='homepage' style={{paddingTop: "15px"}}>
                 <div className='directory-menu'>
                     <LoadingV2 />
                 </div>
             </div>
-        </div> */}
+        </div>
         </>
     );
 }

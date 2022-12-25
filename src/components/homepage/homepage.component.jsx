@@ -9,9 +9,13 @@ import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 import ProductCard from '../product-card/product-card.component';
 import { LoadingV1 } from '../loading/loading-v1.component';
 import { IsExist } from '../../luan-library/check-exist-library';
+import { useSelector } from 'react-redux';
+import { LoadingV3 } from '../loading/loading-v3.component';
+import { selectProductLoading } from '../../store/product/product.selector';
 
 const HomePage = (props) => {
     const {currentProductArray} = props;
+    const {IsLoadingProduct} = useSelector(selectProductLoading);
 
     const settings = {
         slidesToShow: 5,
@@ -48,7 +52,9 @@ const HomePage = (props) => {
 
     return (
         <>
-            <div style={{paddingTop: "85px"}}>
+            {
+                IsLoadingProduct ? <LoadingV3 /> :
+                <div style={{paddingTop: "85px"}}>
                 {              
                 !IsExist(currentProductArray) ?
                 <LoadingV1 />
@@ -69,6 +75,7 @@ const HomePage = (props) => {
                 </div>
                 }
             </div>
+            }
         </>
     )
 }

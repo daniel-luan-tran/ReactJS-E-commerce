@@ -16,6 +16,7 @@ import { userReducer } from './store/user/user.reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { IsExist } from './luan-library/check-exist-library';
 import { setCategoryMap, setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
+import { fetchProductAsyncReduxThunk } from './store/product/product.selector';
 import { setCurrentNavigation } from './store/navigation/navigation.action';
 import { selectCategoryMap } from './store/product/product.selector';
 import { setCurrentCartCount, setCurrentCartItems } from './store/cart/cart.action';
@@ -39,18 +40,19 @@ function App() {
   })
 
   useEffect(() => {
-      const getDataFromFireStore = async () => {
-          const categoryMap = await getCategoriesAndDocuments();
-          let arrayData = [];
-          Object.entries(categoryMap).map((_) => {
-              _[1].map((__) => {
-                  arrayData.push({...__, category: _[0]});
-              });
-          })
-          dispatch(setCurrentProduct(categoryMap));
-          dispatch(setCurrentProductArray(arrayData));
-      }
-      getDataFromFireStore();
+      // const getDataFromFireStore = async () => {
+      //     const categoryMap = await getCategoriesAndDocuments();
+      //     let arrayData = [];
+      //     Object.entries(categoryMap).map((_) => {
+      //         _[1].map((__) => {
+      //             arrayData.push({...__, category: _[0]});
+      //         });
+      //     })
+      //     dispatch(setCurrentProduct(categoryMap));
+      //     dispatch(setCurrentProductArray(arrayData));
+      // }
+      // getDataFromFireStore();
+      fetchProductAsyncReduxThunk(dispatch);
   }, []);
   const currentProduct = useSelector((state) => {
     return state.product.currentProduct

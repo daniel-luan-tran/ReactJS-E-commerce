@@ -20,7 +20,7 @@ ReactDOM.render(
   <React.StrictMode>
     <NavigationProvider>
       <Provider store={store}>
-        <PersistGate loading={<LoadingV3/>} persistor={persistor}>
+        <PersistGate loading={null} persistor={persistor}>
         {/* <UserProvider> */}
           {/* <SearchProvider> */}
             {/* <ProductProvider> */}
