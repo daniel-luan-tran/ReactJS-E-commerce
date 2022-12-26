@@ -22,7 +22,7 @@ ReactDOM.render(
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
         {/* <UserProvider> */}
-          {/* <SearchProvider> */}
+          <SearchProvider>
             {/* <ProductProvider> */}
               {/* <CategoryProvider> */}
                 {/* <CartProvider> */}
@@ -30,7 +30,7 @@ ReactDOM.render(
                 {/* </CartProvider> */}
               {/* </CategoryProvider> */}
             {/* </ProductProvider> */}
-          {/* </SearchProvider> */}
+          </SearchProvider>
         {/* </UserProvider> */}
         </PersistGate>
       </Provider>
