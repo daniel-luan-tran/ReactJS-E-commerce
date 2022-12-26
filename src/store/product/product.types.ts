@@ -13,6 +13,15 @@ export type Product = {
     price: number,
 }
 
-export type productArray = {
-    items: Product[]
+export type ProductArray = {
+    id: string,
+    imageUrl: string,
+    name: string,
+    price: number,
+    category: string,
+}
+
+export type CategoryMap = {
+    title: string,
+    items: Product[],
 }

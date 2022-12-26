@@ -1,26 +1,27 @@
 import { Action, ActionWithPayload, createAction } from '../../utils/reducer/reducer.utils';
-import { Product, PRODUCT_ACTION_TYPES } from './product.types';
+import { ProductArray, PRODUCT_ACTION_TYPES } from './product.types';
 
 
-export type fetchProductStart = Action<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START>;
+export type FetchProductStart = Action<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START>;
 
-export type fetchProductSuccess = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, Product>;
+export type FetchProductSuccess = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, ProductArray[]>;
 
-export type fetchProductFailed = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED, Product>
+export type FetchProductFailed = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED, Error>
 
-export type ProductAction = fetchProductStart | fetchProductSuccess | fetchProductFailed;
+export type ProductAction = FetchProductStart | FetchProductSuccess | FetchProductFailed;
 
-// export const fetchProductStart = () => {
-//     return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START);
-// }
 
-// export const fetchProductSuccess = (product) => {
-//     return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, product);
-// }
+export const fetchProductStart = () : FetchProductStart => {
+    return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START);
+}
 
-// export const fetchProductFailed = (error) => {
-//     return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED, error)
-// }
+export const fetchProductSuccess = (arrayData : ProductArray[]) : FetchProductSuccess => {
+    return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, arrayData);
+}
+
+export const fetchProductFailed = (error : Error) : FetchProductFailed => {
+    return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED, error)
+}
 
 // export const setCurrentProduct = (product: Product) => {
 //     return createAction(PRODUCT_ACTION_TYPES.SET_CURRENT_PRODUCT, product);

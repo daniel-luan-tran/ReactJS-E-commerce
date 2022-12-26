@@ -16,7 +16,6 @@ import { selectProductLoading } from '../../store/product/product.selector';
 const HomePage = (props) => {
     const {currentProductArray} = props;
     const {IsLoadingProduct} = useSelector(selectProductLoading);
-
     const settings = {
         slidesToShow: 5,
         // slidesToScroll: 1,
