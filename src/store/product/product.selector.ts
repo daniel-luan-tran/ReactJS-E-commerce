@@ -17,7 +17,7 @@ const dispatchAsync = async (dispatch: Dispatch<AnyAction>) => {
                 arrayData.push({...__, category: titleCategory});
             });
         })
-        dispatch(fetchProductSuccess(arrayData));
+        dispatch(fetchProductSuccess({categoryMap, arrayData}));
     } catch (error) {
         dispatch(fetchProductFailed(error as Error));
     }

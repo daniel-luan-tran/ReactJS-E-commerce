@@ -1,11 +1,6 @@
 import { ProductAction } from "./product.action";
 import { CategoryMap, Product, ProductArray, PRODUCT_ACTION_TYPES } from "./product.types";
 
-type Payload = {
-  categoryMap?: CategoryMap,
-  arrayData?: ProductArray[],
-}
-
 export type ProductState = {
   currentProduct: CategoryMap, 
   currentProductArray: ProductArray[],
@@ -22,13 +17,12 @@ export const PRODUCT_INITIAL_STATE : ProductState = {
 
 export const productReducer = (state = PRODUCT_INITIAL_STATE, action = {} as ProductAction) => {
   // const { type, payload } = action;
-  const payload = action;
   switch (action.type) {
     case PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START:
       return { ...state, isLoading: true };
     case PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS:
       // const {categoryMap, arrayData} : Payload = payload;
-      return { ...state, currentProduct: action.payload, currentProductArray: action.payload, isLoading: false };
+      return { ...state, currentProduct: action.payload.categoryMap, currentProductArray: action.payload.arrayData, isLoading: false };
     case PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED:
       return { ...state, error: Error, isLoading: false };
     // case PRODUCT_ACTION_TYPES.SET_CURRENT_PRODUCT:

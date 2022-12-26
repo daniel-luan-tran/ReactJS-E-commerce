@@ -6,6 +6,11 @@ export enum PRODUCT_ACTION_TYPES {
     FETCH_PRODUCT_FAILED ='FETCH_PRODUCT_FAILED',
 };
 
+export type Payload = {
+    categoryMap: CategoryMap,
+    arrayData: ProductArray[],
+  }
+
 export type Product = {
     id: string,
     imageUrl: string,

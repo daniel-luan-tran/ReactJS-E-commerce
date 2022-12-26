@@ -1,10 +1,10 @@
 import { Action, ActionWithPayload, createAction } from '../../utils/reducer/reducer.utils';
-import { ProductArray, PRODUCT_ACTION_TYPES } from './product.types';
+import { Payload, ProductArray, PRODUCT_ACTION_TYPES } from './product.types';
 
 
 export type FetchProductStart = Action<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START>;
 
-export type FetchProductSuccess = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, ProductArray[]>;
+export type FetchProductSuccess = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, Payload>;
 
 export type FetchProductFailed = ActionWithPayload<PRODUCT_ACTION_TYPES.FETCH_PRODUCT_FAILED, Error>
 
@@ -15,8 +15,8 @@ export const fetchProductStart = () : FetchProductStart => {
     return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_START);
 }
 
-export const fetchProductSuccess = (arrayData : ProductArray[]) : FetchProductSuccess => {
-    return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, arrayData);
+export const fetchProductSuccess = ({categoryMap, arrayData} : Payload ) : FetchProductSuccess => {
+    return createAction(PRODUCT_ACTION_TYPES.FETCH_PRODUCT_SUCCESS, {categoryMap, arrayData});
 }
 
 export const fetchProductFailed = (error : Error) : FetchProductFailed => {

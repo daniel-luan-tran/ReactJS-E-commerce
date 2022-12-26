@@ -1,2 +1,2 @@
 # ReactJS-E-commerce
-# My published url: https://vocal-fenglisu-36f320.netlify.app
+# My published url: https://luan-react-ecommerce.netlify.app
