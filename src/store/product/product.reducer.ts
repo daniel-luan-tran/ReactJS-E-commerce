@@ -1,12 +1,5 @@
 import { ProductAction } from "./product.action";
-import { CategoryMap, Product, ProductArray, PRODUCT_ACTION_TYPES } from "./product.types";
-
-export type ProductState = {
-  currentProduct: CategoryMap, 
-  currentProductArray: ProductArray[],
-  isLoading: boolean,
-  error: Error | null,
-}
+import { CategoryMap, Product, ProductArray, ProductState, PRODUCT_ACTION_TYPES } from "./product.types";
 
 export const PRODUCT_INITIAL_STATE : ProductState = {
   currentProduct: {} as CategoryMap, 

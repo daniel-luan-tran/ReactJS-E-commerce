@@ -1,10 +1,10 @@
 import React, { useContext, useState,useEffect } from 'react';
-import Directory from '../../components/directory/directory.component';
+import Directory from '../directory/directory.component';
 import './homepage.styles.scss';
 import "../../../node_modules/slick-carousel/slick/slick.css"; 
 import "../../../node_modules/slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { ProductContext } from '../../components/contexts/product.context';
+import { ProductContext } from '../contexts/product.context';
 import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 import ProductCard from '../product-card/product-card.component';
 import { LoadingV1 } from '../loading/loading-v1.component';
@@ -12,6 +12,7 @@ import { IsExist } from '../../luan-library/check-exist-library';
 import { useSelector } from 'react-redux';
 import { LoadingV3 } from '../loading/loading-v3.component';
 import { selectProductLoading } from '../../store/product/product.selector';
+import { ProductArray } from '../../store/product/product.types';
 
 const HomePage = (props) => {
     const {currentProductArray} = props;

@@ -40,18 +40,6 @@ function App() {
   })
 
   useEffect(() => {
-      // const getDataFromFireStore = async () => {
-      //     const categoryMap = await getCategoriesAndDocuments();
-      //     let arrayData = [];
-      //     Object.entries(categoryMap).map((_) => {
-      //         _[1].map((__) => {
-      //             arrayData.push({...__, category: _[0]});
-      //         });
-      //     })
-      //     dispatch(setCurrentProduct(categoryMap));
-      //     dispatch(setCurrentProductArray(arrayData));
-      // }
-      // getDataFromFireStore();
       fetchProductAsyncReduxThunk(dispatch);
   }, []);
   const currentProduct = useSelector((state) => {

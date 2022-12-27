@@ -1,32 +1,30 @@
 import { setCurrentCartCount, setCurrentCartItems } from "./cart.action";
 import {createSelector} from "reselect";
 import { useSelector } from "react-redux";
+import { CartState, Product } from "./cart.types";
 
-export const selectCartItemsReducer = (state) => {
+export const selectCartItemsReducer = (state : any) => {
     return state.cart.productChosen;
 };
 
-export const getCurrentCartCount = (state) => {
+export const getCurrentCartCount = (state : any) => {
     return state.cart.cartCount;
 }
 
-const updateCartReducer = (productChosen) => {
-    const payload = {
-        cartCount: productChosen.length,
-        productChosen: productChosen
+const updateCartReducer = (productChosen : Product[]): CartState => {
+    const payload : CartState = {
+        productChosen: productChosen,
+        cartCount: productChosen.length
     }
     return payload;
 }
 
-// export const updateCartCountReducer = (productChosen) => {
-//     return productChosen.length;
-// }
-
-export const updateCartCountReducer = createSelector([updateCartReducer], (productChosen) => {
-    return productChosen ? productChosen.length : 0;
+export const updateCartCountReducer = createSelector([updateCartReducer], (payload) => {
+    const count : number = payload.cartCount;
+    return count;
 });
 
-const checkExistProduct = (_product, productChosen) => {
+const checkExistProduct = (_product: Product, productChosen: Product[]) => {
     if (typeof productChosen != "undefined") {
         if (productChosen.filter(_ => _.id == _product.id).length > 0)
             return true;
@@ -37,8 +35,8 @@ const checkExistProduct = (_product, productChosen) => {
         return false;
 }
 
-const setItem = (_product, productChosen) => {
-    const setQuantity = (newProduct) => {
+const setItem = (_product: Product, productChosen: Product[]): CartState => {
+    const setQuantity = (newProduct: Product[]):Product[] => {
         return newProduct.map((item) => 
         item.id == _product.id 
             ? {...item, quantity: item.quantity + 1} //spread out all of properties except quantity is set new value
@@ -46,16 +44,16 @@ const setItem = (_product, productChosen) => {
         );
     }
     if (checkExistProduct(_product, productChosen)) {
-        var newProduct = productChosen;
+        var newProduct: Product[] = productChosen;
         return updateCartReducer(setQuantity(newProduct));
     } else {
-        const newProduct = [...productChosen, _product];
+        var newProduct: Product[] = [...productChosen, _product];
         return updateCartReducer(newProduct);
     }
 }
 
-const setDecreaseItem = (_product, productChosen) => {
-    const setQuantity = (newProduct) => {
+const setDecreaseItem = (_product: Product, productChosen: Product[]):CartState => {
+    const setQuantity = (newProduct : Product[]) => {
         return newProduct.map((item) => 
         item.id == _product.id 
             ? {...item, quantity: _product.quantity} //spread out all of properties except quantity is set new value
@@ -73,12 +71,12 @@ const setDecreaseItem = (_product, productChosen) => {
     //////
 }
 
-export const setNewProductChosen = (_product) => { //For remove item
+export const setNewProductChosen = (_product : Product[]) => { //For remove item
     return updateCartReducer(_product);
 }
 
-export const addItemToCart = (product, productChosen) => {
-    const _product = {
+export const addItemToCart = (product: Product, productChosen: Product[]):CartState => {
+    const _product : Product = {
         id: 0,
         name: "",
         price: 0,
@@ -93,7 +91,7 @@ export const addItemToCart = (product, productChosen) => {
     return setItem(_product, productChosen);
 }
 
-export const DecreaseItemFromCart = (product, productChosen) => {
+export const DecreaseItemFromCart = (product: Product, productChosen: Product[]) : CartState => {
     const _product = {
         id: 0,
         name: "",
