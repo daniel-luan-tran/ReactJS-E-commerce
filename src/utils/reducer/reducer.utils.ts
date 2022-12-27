@@ -15,6 +15,6 @@ export function createAction<T extends string, P> (type: T, payload: void): Acti
 
 export function createAction<T extends string, P> (type: T, payload: P) {
     return {type, payload};
-}
+} 
 
 // export const createAction = (type, payload) => ({ type, payload });
