@@ -11,6 +11,14 @@
   .slick-slider .product-card-container {
     height: 210px;
   }
+  .slick-slider .product-card-container .button-container {
+    top: 110px;
+    padding-left: 0;
+    padding-right: 0;
+    height: 33px;
+    min-width: 100px;
+    line-height: 30px;
+  }
   .slick-slider .product-card-container .name, .slick-slider .product-card-container .price {
     font-size: 15px;
   }
