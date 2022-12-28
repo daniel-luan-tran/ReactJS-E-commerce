@@ -6,13 +6,26 @@ import {SignOutUser, auth, onAuthStateChangedHandler, createUserDocumentFromAuth
 import CartIcon from "../cart-icon/cart-icon.component";
 import CartDropDown from "../cart-dropdown/cart-dropdown.component";
 import "./navigation.styles.scss";
+import $ from "jquery";
 
 const Navigation = ({user}) => {
 
     const currentUser = user
+
     const SignOutHandler = async () => {
       await SignOutUser(auth);
       //setCurrentUser(null);
+    }
+
+    const collapseTrigger = () => {
+      let ele = $("#navbar-toggler");
+      let isExpanded = ele.attr("aria-expanded");
+      
+      if (isExpanded == "false") {
+        $("#navbar-toggler .menu-icon").removeClass("active");
+      } else {
+        $("#navbar-toggler .menu-icon").addClass("active");
+      }
     }
 
     return (
@@ -22,8 +35,13 @@ const Navigation = ({user}) => {
             <Link className="navbar-brand" to="#">
                 <CrownLogo className="logo"/>
             </Link>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span className="navbar-toggler-icon"></span>
+            <button id="navbar-toggler" onClick={collapseTrigger} className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              {/* <span className="navbar-toggler-icon"></span> */}
+              <div className="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
               <ul className="navbar-nav text-end link-hover">
