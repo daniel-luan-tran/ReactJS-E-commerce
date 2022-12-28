@@ -15,6 +15,15 @@
     & .product-card-container {
       height: 210px;
 
+      & .button-container {
+        top: 110px;
+        padding-left: 0;
+        padding-right: 0;
+        height: 33px;
+        min-width: 100px;
+        line-height: 30px;
+      }
+
       & .name, .price {
         font-size: 15px
       }
