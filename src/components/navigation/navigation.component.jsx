@@ -26,7 +26,7 @@ const Navigation = ({user}) => {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-              <ul className="navbar-nav text-end">
+              <ul className="navbar-nav text-end link-hover">
                 <li className="nav-item">
                   <Link className="nav-link active" aria-current="page" to="/">HomePage</Link>
                 </li>

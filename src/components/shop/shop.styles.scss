@@ -1,14 +1,75 @@
-.products-container {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 10px;
-    row-gap: 50px;
-    padding: 20px;
+@media (min-width: 640px){
+ 
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        column-gap: 10px;
+        row-gap: 50px;
+        padding: 20px;
+    }
+    
+    .category-name {
+        grid-column: span 1;
+        font-family: "Brush Script MT";
+        font-weight: 600;
+        text-align: center;
+    }
+     
 }
-
-.category-name {
-    grid-column: span 4;
-    font-family: "Brush Script MT";
-    font-weight: 600;
-    text-align: center;
+     
+@media (min-width: 768px){
+    
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        column-gap: 10px;
+        row-gap: 50px;
+        padding: 20px;
+    }
+    
+    .category-name {
+        grid-column: span 2;
+        font-family: "Brush Script MT";
+        font-weight: 600;
+        text-align: center;
+    }
+    
+}
+    
+@media (min-width: 1024px){
+    
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 10px;
+        row-gap: 50px;
+        padding: 20px;
+    }
+    
+    .category-name {
+        grid-column: span 4;
+        font-family: "Brush Script MT";
+        font-weight: 600;
+        text-align: center;
+    }
+    
+}
+    
+@media (min-width: 1200px){
+    
+    .products-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: 10px;
+        row-gap: 50px;
+        padding: 20px;
+    }
+    
+    .category-name {
+        grid-column: span 4;
+        font-family: "Brush Script MT";
+        font-weight: 600;
+        text-align: center;
+    }
+    
 }

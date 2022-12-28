@@ -6,7 +6,6 @@ import ProductCardV2 from "../product-card/product-card-v2.component";
 import { chain, pluck } from "underscore";
 import "../shop/shop.styles.scss"
 import { IsExist } from "../../luan-library/check-exist-library";
-import { data } from "jquery";
 
 export const Shop = (props) => {
     const {categorySelected} = props;
