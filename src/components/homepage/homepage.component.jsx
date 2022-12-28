@@ -20,7 +20,7 @@ const HomePage = (props) => {
     const settings = {
         slidesToShow: 5,
         // slidesToScroll: 1,
-        autoplay: true,
+        autoplay: false,
         autoplaySpeed: 2000,
         //dots: true,
         // centerMode: true,
@@ -28,6 +28,7 @@ const HomePage = (props) => {
         swipeToSlide: true,
         // touchThreshold: 100,
         infinite: true,
+        pauseOnHover: true,
         responsive: [
             {
               breakpoint: 768,
@@ -39,7 +40,7 @@ const HomePage = (props) => {
               }
             },
             {
-              breakpoint: 480,
+              breakpoint: 420,
               settings: {
                 arrows: false,
                 centerMode: true,

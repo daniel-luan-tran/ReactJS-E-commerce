@@ -79,7 +79,7 @@ const SignIn = () => {
                         </div>
                         <div className="row" style={{justifyContent: 'space-between'}}>
                             <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Sign in'} buttonType={'default'} typeName='submit' /></div>
-                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Google Sign in'} buttonType={'googleSignIn'} typeName={'button'} onClickHandler={logGoogleUser} /></div>
+                            <div className="col col-lg-5 col-md-5 col-sm-5 col-xs-5" style={{display: 'flex', justifyContent: 'center'}}><MyButton buttonName={'Google'} buttonType={'googleSignIn'} typeName={'button'} onClickHandler={logGoogleUser} /></div>
                         </div>
                     </form>
                 </div>
