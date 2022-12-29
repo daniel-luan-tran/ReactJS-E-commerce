@@ -1,3 +1,5 @@
+
+
 .cart-dropdown-container {
   position: absolute;
   width: 240px;
@@ -7,10 +9,20 @@
   padding: 5px;
   border: 1px solid black;
   background-color: white;
-  top: 53px;
-  right: 24px;
   z-index: 5;
   
+  @media screen and (max-width: 990px) {
+    .cart-dropdown-container {
+      top: 58px;
+      left: 5px;
+    }
+  }
+
+  @media screen and (min-width: 990px) {
+    top: 53px;
+    right: 24px;
+  }
+
   .empty-message {
     font-size: 18px;
     margin: 50px auto;
@@ -27,3 +39,4 @@
     margin-top: auto;
   }
 }
+
