@@ -1,3 +1,40 @@
-.check-out-img {
+#checkout-component .check-out-img {
     max-width: 80%;
+}
+
+#checkout-component .row:hover {
+    background: #f3f3f3;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+    font-style:italic
+}
+
+.checkout-head-bg{
+    background: #dbedf9;
+}
+
+.checkout-data-bg {
+    background: #2596be26;
+}
+
+@media screen and (max-width: 992px) {
+    .mb-fied-price-item::before {
+        content: "Price/Item";
+        margin-right: 20px;
+        font-weight: 700;
+    }
+    .mb-fied-price-sum::before {
+        content: "Price";
+        margin-right: 20px;
+        font-weight: 700;
+    }
+
+    .mb-d-none {
+        display: none !important;
+    }
+
+    .mb-prod-name {
+        font-family: "Brush Script MT";
+        font-weight: 600;
+        font-size: 20px;
+    }
 }

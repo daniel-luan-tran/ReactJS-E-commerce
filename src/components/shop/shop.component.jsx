@@ -74,8 +74,9 @@ export const Shop = (props) => {
 
     return(
         <>
-            <div id="product-list" className="products-container" style={{paddingTop: "85px"}}>
+            <div id="product-list" className="products-container" style={{paddingTop: "85px", width: "70%", marginRight: "auto", marginLeft: "auto" }}>
                 <BoxSearch />
+                
                 {
                     categorySelected == "" || typeof categorySelected == "undefined"
                     ?

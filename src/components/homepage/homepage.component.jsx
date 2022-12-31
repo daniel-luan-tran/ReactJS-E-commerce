@@ -9,12 +9,45 @@ import { getCategoriesAndDocuments } from '../../utils/firebase/firebase.utils';
 import ProductCard from '../product-card/product-card.component';
 import { LoadingV1 } from '../loading/loading-v1.component';
 import { IsExist } from '../../luan-library/check-exist-library';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { LoadingV3 } from '../loading/loading-v3.component';
 import { selectProductLoading } from '../../store/product/product.selector';
 import { ProductArray } from '../../store/product/product.types';
+import { Alert, Snackbar } from '@mui/material';
+import { addItemToCartAction } from '../../store/cart/cart.action';
+import { selectCartItemsReducer } from '../../store/cart/cart.selector';
+import { MyButton } from '../button/button.component';
+import FadeIn from 'react-fade-in/lib/FadeIn';
 
 const HomePage = (props) => {
+    /* Notification */
+    const [typeNotify, setTyeNotify] = useState("success");
+    const [openNotify, setOpenNotify] = useState(false);
+    const mess = typeNotify == "success" ? "Added!" 
+    : typeNotify == "error" ? "Error!" 
+    : typeNotify == "warning" ? "Removed!" 
+    : typeNotify == "info" ? "Information!" 
+    : "Success!";
+    const triggerNotify = (isOpen, type) => {
+        setTyeNotify(type);
+        setOpenNotify(isOpen);
+    };
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenNotify(false);
+    };
+    /* Notification */
+    const productChosen = useSelector(selectCartItemsReducer);
+    const dispatch = useDispatch();
+    const onClickHandler = (product) => {
+        const item = addItemToCartAction(product, productChosen)
+        dispatch(item);
+        triggerNotify(true, "success");
+    }
+
     const {currentProductArray} = props;
     const {IsLoadingProduct} = useSelector(selectProductLoading);
     const settings = {
@@ -52,7 +85,12 @@ const HomePage = (props) => {
     };
 
     return (
-        <>
+        <div style={{width: "70%",  marginRight: "auto", marginLeft: "auto"}}>
+            <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity={typeNotify} sx={{ width: '100%' }}>
+                    {mess}
+                </Alert>
+            </Snackbar>
             {
                 IsLoadingProduct ? <LoadingV3 /> :
                 <div style={{paddingTop: "85px"}}>
@@ -60,24 +98,36 @@ const HomePage = (props) => {
                 !IsExist(currentProductArray) ?
                 <LoadingV1 />
                 :
-                <Slider {...settings}>
-                    {
-                        currentProductArray.map((_, index) => {
-                            return (
-                                <ProductCard key={`${_.category}-${_.id}`} product={_} index={1} category={_.category} imgSize={{width: "280px"}} />
-                            )
-                        })
-                    }
-                </Slider>
+                <FadeIn>
+                    <Slider {...settings}>
+                        {
+                            currentProductArray.map((_, index) => {
+                                return (
+                                    <div key={`${_.category}-${_.id}`} className='product-card-container'>
+                                        <img src={`${_.imageUrl}`} style={{width: "280px"}} />
+                                        <div className="footer">
+                                            <span className="name">{_.name}</span>
+                                            <span className="price">${_.price}</span>
+                                        </div>
+                                        <MyButton buttonName='Add to cart' typeName='button' buttonType='inverted' onClickHandler={() => {onClickHandler(_)}} />
+                                    </div>
+                                    // <ProductCard key={`${_.category}-${_.id}`} product={_} index={1} category={_.category} imgSize={{width: "280px"}} />
+                                )
+                            })
+                        }
+                    </Slider>
+                </FadeIn>
                 }
                 {
-                <div className='homepage' style={{paddingTop: "15px"}}>
-                    <Directory />
-                </div>
+                    <FadeIn>
+                        <div className='homepage' style={{paddingTop: "15px"}}>
+                            <Directory />
+                        </div>
+                    </FadeIn>
                 }
             </div>
             }
-        </>
+        </div>
     )
 }
 export default HomePage

@@ -174,3 +174,14 @@ code {
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
   font-weight: bold
 }
+
+/* .product-card-container, .menu-item, .category-name {
+  opacity: 0;
+  transform: translate(0, 100px); 
+  transition: all 1s;
+}
+  
+.product-card-container.visible, .menu-item.visible, .category-name.visible {
+  opacity: 1;
+  transform: translate(0, 0); 
+} */
