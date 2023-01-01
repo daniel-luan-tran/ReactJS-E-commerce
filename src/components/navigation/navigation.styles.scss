@@ -1,5 +1,11 @@
 .nav-link {
     font-weight: 700;
+    width: fit-content;
+}
+
+.nav-item {
+    display: flex;
+    justify-content: end;
 }
 
 button.navbar-toggler {

@@ -50,7 +50,7 @@ const ProductCardV2Detail = ({item}) => {
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>
             </div>
-            <MyButton buttonName='Add to cart' typeName='button' buttonType='inverted' onClickHandler={onClickHandler} />
+            <MyButton buttonName='Add cart' typeName='button' buttonType='inverted' onClickHandler={onClickHandler} />
         </div>
         </>
     );

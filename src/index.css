@@ -26,7 +26,7 @@ code {
 }
 
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 10px;
   height: 7px;
 }
 ::-webkit-scrollbar-corner {
@@ -35,7 +35,7 @@ code {
 ::-webkit-scrollbar-thumb {
   background: #525965;
   border: 0px none #ffffff;
-  border-radius: 0px;
+  border-radius: 5px;
 }
 
 /*#region skeleton loading */
@@ -175,13 +175,6 @@ code {
   font-weight: bold
 }
 
-/* .product-card-container, .menu-item, .category-name {
-  opacity: 0;
-  transform: translate(0, 100px); 
-  transition: all 1s;
+img {
+  border-radius: 5%;
 }
-  
-.product-card-container.visible, .menu-item.visible, .category-name.visible {
-  opacity: 1;
-  transform: translate(0, 0); 
-} */

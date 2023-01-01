@@ -15,7 +15,11 @@
 .checkout-data-bg {
     background: #2596be26;
 }
-
+.prod-name {
+    font-family: "Brush Script MT";
+    font-weight: 600;
+    font-size: 20px;
+}
 @media screen and (max-width: 992px) {
     .mb-fied-price-item::before {
         content: "Price/Item";

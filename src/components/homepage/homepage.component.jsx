@@ -64,10 +64,10 @@ const HomePage = (props) => {
         pauseOnHover: true,
         responsive: [
             {
-              breakpoint: 768,
+              breakpoint: 1600,
               settings: {
                 arrows: false,
-                centerMode: true,
+                centerMode: false,
                 // centerPadding: '40px',
                 slidesToShow: 3
               }
@@ -104,12 +104,13 @@ const HomePage = (props) => {
                             currentProductArray.map((_, index) => {
                                 return (
                                     <div key={`${_.category}-${_.id}`} className='product-card-container'>
-                                        <img src={`${_.imageUrl}`} style={{width: "280px"}} />
+                                        {/* <img src={`${_.imageUrl}`} style={{width: "280px"}} /> */}
+                                        <img src={`${_.imageUrl}`} style={{width: "100%"}} />
                                         <div className="footer">
                                             <span className="name">{_.name}</span>
                                             <span className="price">${_.price}</span>
                                         </div>
-                                        <MyButton buttonName='Add to cart' typeName='button' buttonType='inverted' onClickHandler={() => {onClickHandler(_)}} />
+                                        <MyButton buttonName='Add cart' typeName='button' buttonType='inverted' onClickHandler={() => {onClickHandler(_)}} />
                                     </div>
                                     // <ProductCard key={`${_.category}-${_.id}`} product={_} index={1} category={_.category} imgSize={{width: "280px"}} />
                                 )

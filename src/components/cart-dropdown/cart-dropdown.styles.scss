@@ -1,4 +1,15 @@
-
+.close-x {
+  font-size: 30px;
+}
+.close-dropdown-x {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  &:hover {
+    transform: rotate(180deg);
+    transition: 0.5s;
+  }
+}
 
 .cart-dropdown-container {
   position: absolute;

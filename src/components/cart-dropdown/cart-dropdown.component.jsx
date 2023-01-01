@@ -11,6 +11,7 @@ import { selectCartItems, selectCartItemsReducer, updateCartCountReducer } from 
 import { setCurrentCartCount } from "../../store/cart/cart.action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular, brands, icon } from "@fortawesome/fontawesome-svg-core/import.macro";
+import { height } from "@mui/system";
 
 const CartDropDown = () => {
     // const {productChosen} = useContext(CartContext);
@@ -37,11 +38,11 @@ const CartDropDown = () => {
     
     return (
         <div id="cart-dropdown" className="cart-dropdown-container collapse">
-            <div style={{display: "flex", fontWeight: "600", fontSize: "18px", background: "rgba(245, 245, 245, 1)"}}>
+            <div style={{display: "flex", fontWeight: "600", fontSize: "18px", background: "rgba(245, 245, 245, 1)", minHeight: "30px"}}>
                 <FontAwesomeIcon icon={solid('cart-plus')} style={{cursor: "pointer", marginTop: "5px", marginRight: "5px"}} />
                 Your cart
-                <div data-bs-toggle="collapse" data-bs-target="#cart-dropdown" aria-expanded="false" aria-controls="cart-dropdown" style={{position: "absolute", cursor: "pointer", right: "5px", top: "5px"}}>
-                    <FontAwesomeIcon icon={solid('times')} style={{fontSize: "1.5em"}}/>
+                <div className="close-dropdown-x" data-bs-toggle="collapse" data-bs-target="#cart-dropdown" aria-expanded="false" aria-controls="cart-dropdown" style={{position: "absolute", cursor: "pointer", right: "5px", top: "5px"}}>
+                    <FontAwesomeIcon icon={solid('times')} className="close-x" />
                 </div>
             </div>
             <CartProductList productChosen={productChosen} />

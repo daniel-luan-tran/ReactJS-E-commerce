@@ -192,7 +192,7 @@ const Checkout = () => {
                             return (
                             <div key={product.id} className="row justify-content-center py-3 border-bottom checkout-data-bg">
                                 <div className="col-lg-2 d-flex justify-content-center align-items-center"><img className="check-out-img" src={`${product.imageUrl}`} /></div>
-                                <div className="col-lg-3 d-flex align-items-center justify-content-center mb-prod-name">{product.name}</div>
+                                <div className="col-lg-3 d-flex align-items-center justify-content-center mb-prod-name prod-name">{product.name}</div>
                                 <div className="col-lg-2 d-flex justify-content-between align-items-center">
                                     <ThemeProvider theme={theme}>
                                         <Button styles={{borderRadius: "inherit"}} size="small" onClick={() => {DecreaseQuantity(product)}} variant="contained" color="neutral">
@@ -228,7 +228,7 @@ const Checkout = () => {
                     :
                     <div className="fw-bold">Nothing in cart!!!</div>
                 }
-                <div className="row justify-content-center py-3 border-bottom">
+                <div className="row justify-content-center py-3 border-bottom checkout-head-bg mb-3">
                     <div className="col-lg-9 d-flex justify-content-center align-items-center"></div>
                     <div className="col-lg-2 d-flex justify-content-center align-items-center fw-bold">TotalPrice</div>
                     <div className="col-lg-1 d-flex justify-content-center align-items-center fw-bold">${totalPrice(productChosen)}</div>
