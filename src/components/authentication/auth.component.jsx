@@ -6,10 +6,10 @@ export const Auth = () => {
     return (
         <>
         <div className="row auth" style={{paddingTop: "15px"}}>
-            <div className="col-lg-5 mw-100">
+            <div className="col-xl-5  col-lg-12 col-md-12 col-sm-12 col-12 mw-100">
                 <SignIn />
             </div>
-            <div className="col-lg-7 mw-100">
+            <div className="col-xl-7 col-md-12 col-sm-12 col-12 mw-100">
                 <SignUp />
             </div>
         </div>

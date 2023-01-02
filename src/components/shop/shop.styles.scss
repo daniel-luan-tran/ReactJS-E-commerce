@@ -1,3 +1,22 @@
+.menu-icon {
+    position: fixed;
+    top: 0px;
+    left: 26px;
+    z-index: 2;
+    height: fit-content;
+}
+
+.box-menu-icon {
+    height: 38px;
+    width: 54px;    
+    --bs-bg-opacity: 1;
+    background-color: #f5f5f5;
+    position: fixed;
+    top: 65px;
+    border-top-right-radius: 25px;
+    border-bottom-right-radius: 25px;
+}
+
 @media (max-width: 768px) {
     .products-container {
         display: grid;

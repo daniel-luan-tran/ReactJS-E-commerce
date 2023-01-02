@@ -16,8 +16,8 @@ const ProductCardV2 = ({category, product}) => {
             {
             product.map((item, index) => {
                 return (
-                    <FadeIn>
-                        <ProductCardV2Detail key={index} item={item} />
+                    <FadeIn key={index}>
+                        <ProductCardV2Detail item={item} />
                     </FadeIn>
                 )
             })
