@@ -201,9 +201,9 @@ export const Shop = (props) => {
                 </DrawerHeader>
                 <Divider />
                 <List style={{padding: "8px"}}>
-                    <div className="fw-bold">Keyword</div>
+                    {/* <div className="fw-bold mobile-field">Keyword</div> */}
                     <div className="mb-3"><BoxSearch /></div>
-                    <div className="fw-bold">Price</div>
+                    {/* <div className="fw-bold mobile-field">Price</div> */}
                     <div className="mb-3"><BoxSearchPrice /></div>
                 </List>
                 <Divider />

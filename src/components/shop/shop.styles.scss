@@ -36,6 +36,13 @@
     .MuiDrawer-paper {
         height: fit-content !important;
     }
+
+    .mobile-field {
+        
+    }
+    .desktop-field {
+        display: none !important;
+    }
 }
 
 @media (max-height: 420px) {
@@ -45,7 +52,12 @@
 }
      
 @media (min-width: 768px){
-    
+    .mobile-field {
+        display: none !important;
+    }
+    .desktop-field {
+
+    }
     .products-container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
