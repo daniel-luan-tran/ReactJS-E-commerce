@@ -28,6 +28,8 @@ import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
 import { NavigationContext } from "../contexts/navigation.context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { solid } from "@fortawesome/fontawesome-svg-core/import.macro";
 
 const drawerWidth = 300;
 
@@ -165,7 +167,8 @@ export const Shop = (props) => {
                     edge="start"
                     sx={{ mr: 2,...(openSidebar && { display: 'none' }) }}
                     >
-                    <MenuIcon  />
+                    <FontAwesomeIcon icon={solid('magnifying-glass')} />
+                    {/* <MenuIcon  /> */}
                 </IconButton>
             </div>
 
@@ -184,7 +187,8 @@ export const Shop = (props) => {
                 open={openSidebar}
                 >
                 <DrawerHeader className="filter-header">
-                    <div style={{textAlign: "left", width: "100%", fontWeight: '700'}}>Filter</div>
+                    <FontAwesomeIcon icon={solid('magnifying-glass')} />
+                    <div style={{textAlign: "left", width: "100%", fontWeight: '700', marginLeft: "10px"}}>Filter</div>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
