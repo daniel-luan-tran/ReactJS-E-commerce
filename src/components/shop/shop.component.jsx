@@ -186,7 +186,7 @@ export const Shop = (props) => {
                 '& .MuiDrawer-paper': {
                     width: drawerWidth,
                     boxSizing: 'border-box',
-                    top: "65px"
+                    top: "65px",
                 },
                 }}
                 variant="persistent"

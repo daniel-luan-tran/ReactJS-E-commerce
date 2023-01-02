@@ -32,6 +32,10 @@
         font-weight: 600;
         text-align: center;
     }
+
+    .MuiDrawer-paper {
+        height: fit-content !important;
+    }
 }
      
 @media (min-width: 768px){
