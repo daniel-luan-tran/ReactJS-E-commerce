@@ -30,7 +30,7 @@ export const Notification = ({isOpen, type, trigger}) => {
 
     return (
         <Stack spacing={2} sx={{ width: '100%' }}>
-            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical:"top", horizontal:"center" }}>
                 <Alert onClose={handleClose} severity={type} sx={{ width: '100%' }}>
                 {
                     type == "success" ? "Success!" 

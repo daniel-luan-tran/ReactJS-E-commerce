@@ -39,7 +39,7 @@ const ProductCardV2Detail = ({item}) => {
     }
     return(
         <>
-        <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose}>
+        <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical:"top", horizontal:"center" }}>
             <Alert onClose={handleClose} severity={typeNotify} sx={{ width: '100%' }}>
                 {mess}
             </Alert>

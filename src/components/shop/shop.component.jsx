@@ -155,7 +155,7 @@ export const Shop = (props) => {
     return(
         <>
         <Box sx={{ display: 'flex' }}>
-            <CssBaseline />
+            {/* <CssBaseline /> */}
             <div className="box-menu-icon">
                 <IconButton
                     className="menu-icon-sidebar"

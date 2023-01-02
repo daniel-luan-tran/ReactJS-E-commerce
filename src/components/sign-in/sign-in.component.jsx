@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { Input } from "../form-input/form-input.component";
 import { MyButton } from "../button/button.component";
 import { UserProvider, UserContext } from "../contexts/user.context";
+import { Alert, Snackbar } from "@mui/material";
 
 const defaultFormFields = {
     email: "",
@@ -12,6 +13,27 @@ const defaultFormFields = {
 const SignIn = () => {
     const [state, setStateForFormField] = useState(defaultFormFields); //defaultFormFields set defaulf value cho state => truyền destructure (*) (dòng dưới)
     const { email, password } = state; //(*)
+    const [openNotify, setOpenNotify] = useState(false);
+    const [typeNotify, setTyeNotify] = useState("success");
+
+    const mess = typeNotify == "success" ? "Logined!" 
+    : typeNotify == "error" ? "Wrong username or password!"
+    : typeNotify == "warning" ? "Warning!" 
+    : typeNotify == "info" ? "Information!" 
+    : "Success!";
+
+    const triggerNotify = (isOpen, type) => {
+        setTyeNotify(type);
+        setOpenNotify(isOpen);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpenNotify(false);
+    };
 
     //const {setCurrentUser, currentUser} = useContext(UserContext); //Hàm này của react có param là UserContext return {setCurrentUser, currentUser}
 
@@ -31,15 +53,15 @@ const SignIn = () => {
     const handleLoginSubmit = async () => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
-            
+            triggerNotify(true, "success");
             resetFormField();
         } catch (error) {
             if (error.code == 'auth/wrong-password') {
-                alert('Wrong password!');
+                triggerNotify(true, "error");
             } else if (error.code == 'auth/user-not-found') {
-                alert('Wrong user email!');
+                triggerNotify(true, "error");
             } else {
-                alert('Log in failed!')
+                triggerNotify(true, "error", "failed");
             }
             console.log(error);
         }
@@ -62,6 +84,11 @@ const SignIn = () => {
 
     return (
         <>
+        <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical:"top", horizontal:"center" }}>
+            <Alert onClose={handleClose} severity={typeNotify} sx={{ width: '100%' }}>
+                {mess}
+            </Alert>
+        </Snackbar>
         <div className="sign-in">
             <div className="row justify-content-center pt-3">
                 <div className="col-8 p-5  w-90">

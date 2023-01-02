@@ -116,7 +116,7 @@ code {
 }
 
 .title-skeleton {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 1.25rem;
   text-transform: capitalize;
   word-wrap: none;
@@ -176,7 +176,7 @@ code {
 
 .shadow-hover:hover {
   box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
-  font-weight: bold
+  font-weight: 700
 }
 
 img {
