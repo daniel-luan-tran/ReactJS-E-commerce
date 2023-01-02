@@ -37,6 +37,12 @@
         height: fit-content !important;
     }
 }
+
+@media (max-height: 420px) {
+    .MuiDrawer-paper {
+        height: 80vh !important;
+    }
+}
      
 @media (min-width: 768px){
     
