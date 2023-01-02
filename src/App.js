@@ -26,6 +26,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    debugger
     const unsubscribe = onAuthStateChangedHandler((_user) => {
         if (_user) {
             const x =createUserDocumentFromAuth(_user);
@@ -36,6 +37,7 @@ function App() {
     return unsubscribe;
   }, []);
   const currentUser = useSelector((state) => {
+    debugger
     return state.user.currentUser
   })
 

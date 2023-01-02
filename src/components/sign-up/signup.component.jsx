@@ -67,7 +67,7 @@ export const SignUp = () => {
                     handleSubmit();
                 }}>
                     <div className="mb-3">
-                        <Input typeName='text' inputId='InputName' labelName='Your name' inputName='displayname' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
+                        <Input typeName='text' inputId='InputName' labelName='Your name' inputName='displayName' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
                         <Input typeName='email' inputId='InputEmailSignUp' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
