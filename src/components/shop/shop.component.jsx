@@ -168,7 +168,7 @@ export const Shop = (props) => {
             <CssBaseline />
             <div className="box-menu-icon">
                 <IconButton
-                    className="menu-icon"
+                    className="menu-icon-sidebar"
                     color="inherit"
                     aria-label="open drawer"
                     onClick={handleDrawerOpen}
