@@ -12,11 +12,12 @@ import { setCurrentCartCount } from "../../store/cart/cart.action";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { solid, regular, brands, icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { height } from "@mui/system";
+import { NavigationContext } from "../contexts/navigation.context";
 
 const CartDropDown = () => {
     // const {productChosen} = useContext(CartContext);
     const dispatch = useDispatch();
-    
+    const {navigation, setNavigation} = useContext(NavigationContext);
     const productChosen = useSelector(selectCartItemsReducer);
     
     useEffect(() => {
@@ -30,9 +31,11 @@ const CartDropDown = () => {
 
     const navigate = useNavigate();
     const navigateBackToShopHandler = () => {
+        setNavigation("/shop");
         navigate("/shop");
     }
     const navigateCheckoutHandler = () => {
+        setNavigation("/checkout");
         navigate("/checkout");
     }
     

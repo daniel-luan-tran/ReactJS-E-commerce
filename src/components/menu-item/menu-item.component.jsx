@@ -8,6 +8,7 @@ const MenuItem = ({title, imageUrl}) => {
     const navigate = useNavigate();
     
     const onClickHandler = (title) => {
+        setNavigation(`shop/${title}`);
         navigate(`shop/${title}`)
     }
 

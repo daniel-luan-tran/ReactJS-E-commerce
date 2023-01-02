@@ -85,7 +85,7 @@ const HomePage = (props) => {
     };
 
     return (
-        <div style={{width: "70%",  marginRight: "auto", marginLeft: "auto"}}>
+        <div className='main-background' style={{width: "70%",  marginRight: "auto", marginLeft: "auto"}}>
             <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={typeNotify} sx={{ width: '100%' }}>
                     {mess}

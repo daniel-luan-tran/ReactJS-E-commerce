@@ -27,6 +27,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import { NavigationContext } from "../contexts/navigation.context";
 
 const drawerWidth = 300;
 
@@ -79,7 +80,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 export const Shop = (props) => {
     const {categorySelected} = props;
     const {currentProduct, currentProductArray} = props
-    const {searchString, searchPriceMin, searchPriceMax} = useContext(SearchContext);
+    const {searchString, searchPriceMin, searchPriceMax, setSearchString, setSearchPriceMin, setSearchPriceMax} = useContext(SearchContext);
+    const {navigation, setNavigation} = useContext(NavigationContext);
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [filteredProductsByKeyword, setFilteredProductsByKeyword] = useState([]);
 
@@ -94,6 +96,11 @@ export const Shop = (props) => {
       setOpenSidebar(false);
     };
   
+    useEffect(() => {
+        setSearchString("");
+        setSearchPriceMin("");
+        setSearchPriceMax("");
+    }, [navigation]);
 
     useEffect(() => {
         IsExist(currentProduct) && Object.entries(currentProduct).map((item) => {
@@ -193,7 +200,7 @@ export const Shop = (props) => {
                 anchor="left"
                 open={openSidebar}
                 >
-                <DrawerHeader>
+                <DrawerHeader className="filter-header">
                     <div style={{textAlign: "left", width: "100%", fontWeight: '700'}}>Filter</div>
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -209,7 +216,7 @@ export const Shop = (props) => {
                 <Divider />
             </Drawer>
             <Main open={openSidebar}>
-                <div id="product-list" className="products-container" style={{paddingTop: "85px", width: "70%", marginRight: "auto", marginLeft: "auto" }}>
+                <div id="product-list" className="products-container main-background" style={{paddingTop: "85px", width: "70%", marginRight: "auto", marginLeft: "auto" }}>
                     {
                         categorySelected == "" || typeof categorySelected == "undefined"
                         ?
