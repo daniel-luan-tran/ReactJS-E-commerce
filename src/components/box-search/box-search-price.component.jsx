@@ -28,7 +28,7 @@ export const BoxSearchPrice = () => {
     
     return (
         <>
-        {/* <form className="box-search-price-min border rounded-pill" style={{minWidth: "260px"}}>
+        <form className="box-search-price-min border rounded-pill" style={{minWidth: "260px"}}>
             <FontAwesomeIcon icon={solid('dollar-sign')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} />
             <span>From: </span><input type="text" className="border-0 input-style-price" onChange={onChangeHandlerMin} value={searchPriceMin} placeholder="Enter price from"></input>
             {searchPriceMin != "" && <FontAwesomeIcon icon={regular('circle-xmark')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} onClick={onClickCloseMin} />}
@@ -37,8 +37,8 @@ export const BoxSearchPrice = () => {
             <FontAwesomeIcon icon={solid('dollar-sign')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} />
             <span style={{marginRight: "21px"}}>To: </span><input type="text" className="border-0 input-style-price" onChange={onChangeHandlerMax} value={searchPriceMax} placeholder="Enter price to"></input>
             {searchPriceMax != "" && <FontAwesomeIcon icon={regular('circle-xmark')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} onClick={onClickCloseMax} />}
-        </form> */}
-        <TextField
+        </form>
+        {/* <TextField
             id="standard-number"
             label="From price $"
             type="number"
@@ -65,7 +65,7 @@ export const BoxSearchPrice = () => {
             autoComplete="off"
             placeholder="Enter price $"
             className="mb-3"
-        />
+        /> */}
         </>
     )
 }

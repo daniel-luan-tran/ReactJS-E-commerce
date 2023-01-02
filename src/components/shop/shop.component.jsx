@@ -201,17 +201,15 @@ export const Shop = (props) => {
                 </DrawerHeader>
                 <Divider />
                 <List style={{padding: "8px"}}>
-                    {/* <div className="fw-bold">Keyword</div> */}
+                    <div className="fw-bold">Keyword</div>
                     <div className="mb-3"><BoxSearch /></div>
-                    {/* <div className="fw-bold">Price</div> */}
+                    <div className="fw-bold">Price</div>
                     <div className="mb-3"><BoxSearchPrice /></div>
                 </List>
                 <Divider />
             </Drawer>
             <Main open={openSidebar}>
                 <div id="product-list" className="products-container" style={{paddingTop: "85px", width: "70%", marginRight: "auto", marginLeft: "auto" }}>
-                    {/* <BoxSearch />
-                    <BoxSearchPrice /> */}
                     {
                         categorySelected == "" || typeof categorySelected == "undefined"
                         ?

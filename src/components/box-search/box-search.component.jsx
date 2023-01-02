@@ -19,20 +19,20 @@ export const BoxSearch = () => {
     }
 
     return (
-        // <form className="box-search border rounded-pill" style={{minWidth: "260px"}}>
-        //     <FontAwesomeIcon icon={solid('magnifying-glass')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} />
-        //     <input type="text" className="border-0 input-style-keyword" onChange={onChangeHandler} value={searchString} placeholder="Enter keyword"></input>
-        //     {searchString != "" && <FontAwesomeIcon icon={regular('circle-xmark')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} onClick={onClickHandler} />}
-        // </form>
-        <TextField
-            id="standard-search"
-            label="Keyword"
-            type="search"
-            variant="filled"
-            onChange={onChangeHandler}
-            style={{width: "100%"}}
-            autoComplete="off"
-            placeholder="Enter keyword"
-        />
+        <form className="box-search border rounded-pill" style={{minWidth: "260px"}}>
+            <FontAwesomeIcon icon={solid('magnifying-glass')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} />
+            <input type="text" className="border-0 input-style-keyword" onChange={onChangeHandler} value={searchString} placeholder="Enter keyword"></input>
+            {searchString != "" && <FontAwesomeIcon icon={regular('circle-xmark')} style={{marginLeft: "10px", marginRight: "10px", cursor: "pointer"}} onClick={onClickHandler} />}
+        </form>
+        // <TextField
+        //     id="standard-search"
+        //     label="Keyword"
+        //     type="search"
+        //     variant="filled"
+        //     onChange={onChangeHandler}
+        //     style={{width: "100%"}}
+        //     autoComplete="off"
+        //     placeholder="Enter keyword"
+        // />
     )
 }
