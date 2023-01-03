@@ -16,7 +16,7 @@ import { userReducer } from './store/user/user.reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { IsExist } from './luan-library/check-exist-library';
 import { setCategoryMap, setCurrentProduct, setCurrentProductArray } from './store/product/product.action';
-import { fetchProductAsyncReduxThunk } from './store/product/product.selector';
+import { fetchProductAsyncReduxThunk, getCurrentProduct, getCurrentProductArray } from './store/product/product.selector';
 import { setCurrentNavigation } from './store/navigation/navigation.action';
 import { selectCategoryMap } from './store/product/product.selector';
 import { setCurrentCartCount, setCurrentCartItems } from './store/cart/cart.action';
@@ -42,12 +42,9 @@ function App() {
   useEffect(() => {
       fetchProductAsyncReduxThunk(dispatch);
   }, []);
-  const currentProduct = useSelector((state) => {
-    return state.product.currentProduct
-  })
-  const currentProductArray = useSelector((state) => {
-    return state.product.currentProductArray
-  })
+  
+  const currentProduct = useSelector(getCurrentProduct);
+  const currentProductArray = useSelector(getCurrentProductArray);
   
   return (
     <div>

@@ -3,7 +3,7 @@ import { AnyAction } from "redux";
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 import { fetchProductFailed, fetchProductStart, fetchProductSuccess } from "./product.action";
 import { ProductAction } from "./product.action";
-import { CategoryMap, ProductArray } from "./product.types";
+import { CategoryMap, Product, ProductArray } from "./product.types";
 
 const dispatchAsync = async (dispatch: Dispatch<AnyAction>) => {
     dispatch(fetchProductStart());
@@ -30,3 +30,11 @@ export const fetchProductAsyncReduxThunk = (dispatch: Dispatch<AnyAction>) => {
 export const selectProductLoading = (state: any) => {
     return state.product.isLoading;
 }
+
+export const getCurrentProduct = (state : any) : Product => {
+    return state.product.currentProduct
+}
+export const getCurrentProductArray = (state : any) : ProductArray[] => {
+    return state.product.currentProductArray
+}
+  

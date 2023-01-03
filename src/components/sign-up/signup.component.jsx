@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { createAuthUserWithEmailAndPassword, createUserDocumentFromAuth } from "../../utils/firebase/firebase.utils"
-import { Input } from "../form-input/form-input.component";
+import { MyInput } from "../form-input/form-input.component";
 import { MyButton } from "../button/button.component";
 import { UserContext } from "../contexts/user.context";
 
@@ -67,15 +67,15 @@ export const SignUp = () => {
                     handleSubmit();
                 }}>
                     <div className="mb-3">
-                        <Input typeName='text' inputId='InputName' labelName='Your name' inputName='displayName' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
+                        <MyInput typeName='text' inputId='InputName' labelName='Your name' inputName='displayName' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
-                        <Input typeName='email' inputId='InputEmailSignUp' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
+                        <MyInput typeName='email' inputId='InputEmailSignUp' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
                     </div>
                     <div className="mb-3">
-                    <Input typeName='password' inputId='InputPasswordSignUp' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                    <MyInput typeName='password' inputId='InputPasswordSignUp' labelName='Password' inputName='password' inputValue={password} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
-                    <Input typeName='password' inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
+                    <MyInput typeName='password' inputId='ConfirmPassword' labelName='Confirm Password' inputName='confirmPassword' inputValue={confirmPassword} onChangeHandler={handleChange} isRequired={true} helpId='' helpText="" />
 
                     </div>
                     <MyButton buttonName={'Sign up'} buttonType={'default'} />
