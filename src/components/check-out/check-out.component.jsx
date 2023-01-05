@@ -23,6 +23,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import "../product-card/product-card.styles.scss";
 import FadeIn from "react-fade-in/lib/FadeIn";
+import MyImage from "../lazy-load/lazy-load.component";
 
 const theme = createTheme({
 //   status: {
@@ -191,7 +192,10 @@ const Checkout = () => {
                         productChosen.map((product) => {
                             return (
                             <div key={product.id} className="row justify-content-center py-3 border-bottom checkout-data-bg">
-                                <div className="col-lg-2 d-flex justify-content-center align-items-center"><img className="check-out-img" src={`${product.imageUrl}`} /></div>
+                                <div className="col-lg-2 d-flex justify-content-center align-items-center">
+                                    <MyImage className="check-out-img" imageUrl={product.imageUrl} />
+                                    {/* <img className="check-out-img" src={`${product.imageUrl}`} /> */}
+                                </div>
                                 <div className="col-lg-3 d-flex align-items-center justify-content-center mb-prod-name prod-name">{product.name}</div>
                                 <div className="col-lg-2 d-flex justify-content-between align-items-center">
                                     <ThemeProvider theme={theme}>

@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCartItemsReducer } from "../../store/cart/cart.selector";
 import { addItemToCartAction, setCurrentCartCount } from "../../store/cart/cart.action";
 import { Alert, Snackbar, Stack } from "@mui/material";
+import MyImage from "../lazy-load/lazy-load.component";
 
 const ProductCardV2Detail = ({item}) => {
     /* Notification */
@@ -45,7 +46,8 @@ const ProductCardV2Detail = ({item}) => {
             </Alert>
         </Snackbar>
         <div className='product-card-container'>
-            <img src={`${imageUrl}`} />
+            <MyImage className="" imageUrl={imageUrl} />
+            {/* <img src={`${imageUrl}`} /> */}
             <div className="footer">
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>

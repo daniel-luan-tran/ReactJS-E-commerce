@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addItemToCartAction, setCurrentCartCount } from "../../store/cart/cart.action";
 import { Alert, Snackbar, Stack } from "@mui/material";
 import FadeIn from "react-fade-in/lib/FadeIn";
+import MyImage from "../lazy-load/lazy-load.component";
 
 const ProductCard = ({category, product, index, imgSize}) => {
     /* Notification */
@@ -51,7 +52,8 @@ const ProductCard = ({category, product, index, imgSize}) => {
         </div>}
         <FadeIn>
             <div className='product-card-container'>
-                <img src={`${imageUrl}`} style={imgSize} />
+                <MyImage className="" imageUrl={imageUrl} style={imgSize} />
+                {/* <img src={`${imageUrl}`} style={imgSize} /> */}
                 <div className="footer">
                     <span className="name">{name}</span>
                     <span className="price">${price}</span>

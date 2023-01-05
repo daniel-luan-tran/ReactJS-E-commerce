@@ -18,6 +18,7 @@ import { addItemToCartAction } from '../../store/cart/cart.action';
 import { selectCartItemsReducer } from '../../store/cart/cart.selector';
 import { MyButton } from '../button/button.component';
 import FadeIn from 'react-fade-in/lib/FadeIn';
+import MyImage from '../lazy-load/lazy-load.component';
 
 const HomePage = (props) => {
     /* Notification */
@@ -104,8 +105,8 @@ const HomePage = (props) => {
                             currentProductArray.map((_, index) => {
                                 return (
                                     <div key={`${_.category}-${_.id}`} className='product-card-container'>
-                                        {/* <img src={`${_.imageUrl}`} style={{width: "280px"}} /> */}
-                                        <img src={`${_.imageUrl}`} style={{width: "100%"}} />
+                                        <MyImage className="" imageUrl={_.imageUrl} />
+                                        {/* <img src={`${_.imageUrl}`} style={{width: "100%"}} /> */}
                                         <div className="footer">
                                             <span className="name">{_.name}</span>
                                             <span className="price">${_.price}</span>
