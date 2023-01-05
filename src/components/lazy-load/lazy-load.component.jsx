@@ -8,9 +8,9 @@ const MyImage = ({className,imageUrl,style}) => (
       className={className}
       style={style}
       // alt={image.alt}
-      // height={image.height}
+      height={"100%"}
       src={imageUrl} // use normal <img> attributes as props
-      // width={image.width} 
+      width={"100%"} 
       effect="blur"
       />
     {/* <span>{image.caption}</span> */}

@@ -46,8 +46,8 @@ const ProductCardV2Detail = ({item}) => {
             </Alert>
         </Snackbar>
         <div className='product-card-container'>
-            <MyImage className="" imageUrl={imageUrl} />
-            {/* <img src={`${imageUrl}`} /> */}
+            {/* <MyImage className="" imageUrl={imageUrl} /> */}
+            <img src={`${imageUrl}`} />
             <div className="footer">
                 <span className="name">{name}</span>
                 <span className="price">${price}</span>

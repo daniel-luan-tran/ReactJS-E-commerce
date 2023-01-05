@@ -71,7 +71,7 @@ export const Shop = (props) => {
     const [filteredProductsByKeyword, setFilteredProductsByKeyword] = useState([]);
 
     const theme = useTheme();
-    const [openSidebar, setOpenSidebar] = useState(false);
+    const [openSidebar, setOpenSidebar] = useState(true);
   
     const handleDrawerOpen = () => {
       setOpenSidebar(true);
