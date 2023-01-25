@@ -172,7 +172,7 @@ export const Shop = (props) => {
                 </IconButton>
             </div>
 
-            <Drawer
+            <Drawer id="filter-sidebar"
                 sx={{
                 width: drawerWidth,
                 flexShrink: 0,
