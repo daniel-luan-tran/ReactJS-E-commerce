@@ -5,7 +5,7 @@ import { MyButton } from "../button/button.component";
 import { UserContext } from "../contexts/user.context";
 
 const defaultFormFields = {
-    displayname: "",
+    displayName: "",
     email: "",
     password: "",
     confirmPassword: "",
@@ -13,17 +13,17 @@ const defaultFormFields = {
 
 export const SignUp = () => {
     const [state, setStateForFormField] = useState(defaultFormFields); //defaultFormFields set defaulf value cho state => truyền destructure (*) (dòng dưới)
-    const { displayname, email, password, confirmPassword } = state; //(*)
+    const { displayName, email, password, confirmPassword } = state; //(*)
 
     const handleChange = (e) => {
 
         const { name, value } = e.target; //sự kiên onChange => truyền vào destructure từ name và value của thẻ input
 
         setStateForFormField({ ...state, [name]: value });
-        //[name]:value được xử lý động, nếu nhập vào displayname là Luan => ['displayname']: 'Luan' => truyền vào destructure (*) => defaultFormFields.displayname = value
+        //[name]:value được xử lý động, nếu nhập vào displayName là Luan => ['displayName']: 'Luan' => truyền vào destructure (*) => defaultFormFields.displayName = value
 
         //này giống như setState trong kiểu class
-        //defaultFormFields['displayname'] = value;
+        //defaultFormFields['displayName'] = value;
         //Kiểu cũ: setState({...state})
     };
 
@@ -46,7 +46,7 @@ export const SignUp = () => {
             try {
                 const { user } = await createAuthUserWithEmailAndPassword(email, password);
                 //setCurrentUser(user);
-                await createUserDocumentFromAuth(user, { displayname });
+                await createUserDocumentFromAuth(user, { displayName });
                 resetFormField();
             } catch (error) {
                 if (error.code == 'auth/email-already-in-use') {
@@ -67,7 +67,7 @@ export const SignUp = () => {
                     handleSubmit();
                 }}>
                     <div className="mb-3">
-                        <MyInput typeName='text' inputId='InputName' labelName='Your name' inputName='displayName' inputValue={displayname} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
+                        <MyInput typeName='text' inputId='InputName' labelName='Your name' inputName='displayName' inputValue={displayName} onChangeHandler={handleChange} isRequired={true} helpId='nameHelp' helpText='Enter your fullname please.' />
                     </div>
                     <div className="mb-3">
                         <MyInput typeName='email' inputId='InputEmailSignUp' labelName='Email address' inputName='email' inputValue={email} onChangeHandler={handleChange} isRequired={true} helpId='emailHelp' helpText="We'll never share your email with anyone else." />
