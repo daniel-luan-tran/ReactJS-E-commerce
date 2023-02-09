@@ -15,6 +15,7 @@ const SignIn = () => {
     const { email, password } = state; //(*)
     const [openNotify, setOpenNotify] = useState(false);
     const [typeNotify, setTyeNotify] = useState("success");
+    const [countDown, setCountDown] = useState(3);
 
     const mess = typeNotify == "success" ? "Logined!" 
     : typeNotify == "error" ? "Wrong username or password!"
@@ -39,7 +40,8 @@ const SignIn = () => {
 
     const logGoogleUser = async () => {
         const {user} = await signInWithGooglePopup();
-        debugger
+        triggerNotify(true, "success");
+        signInRedirect();
         const userDocRef = await createUserDocumentFromAuth(user);
     }
 
@@ -51,10 +53,23 @@ const SignIn = () => {
         window.open("/home", "_self");
     }
 
+    const signInRedirect = () => {
+        let __countDown = 3;
+        setCountDown(3);
+        setInterval(() => {
+            __countDown = __countDown - 1;
+            setCountDown(__countDown)
+            if(__countDown == 0) {
+                window.location = "/";
+            }
+        }, 1000);
+    }
+
     const handleLoginSubmit = async () => {
         try {
             const { user } = await signInAuthUserWithEmailAndPassword(email, password);
             triggerNotify(true, "success");
+            signInRedirect();
             resetFormField();
         } catch (error) {
             if (error.code == 'auth/wrong-password') {
@@ -87,7 +102,15 @@ const SignIn = () => {
         <>
         <Snackbar open={openNotify} autoHideDuration={3000} onClose={handleClose} anchorOrigin={{ vertical:"top", horizontal:"center" }}>
             <Alert onClose={handleClose} severity={typeNotify} sx={{ width: '100%' }}>
-                {mess}
+                {
+                    typeNotify == "success" 
+                    ? 
+                    <>
+                    After {countDown}s, we will redirect to Home or <a href="/">go right now</a>
+                    </>
+                    : 
+                    mess
+                }
             </Alert>
         </Snackbar>
         <div className="sign-in">
