@@ -5,6 +5,7 @@ import { fetchProductFailed, fetchProductStart, fetchProductSuccess } from "./pr
 import { ProductAction } from "./product.action";
 import { CategoryMap, Product, ProductArray } from "./product.types";
 
+//Get data from server and dispatch into redux store
 const dispatchAsync = async (dispatch: Dispatch<AnyAction>) => {
     dispatch(fetchProductStart());
     try {
@@ -26,6 +27,7 @@ const dispatchAsync = async (dispatch: Dispatch<AnyAction>) => {
 export const fetchProductAsyncReduxThunk = (dispatch: Dispatch<AnyAction>) => {
     return dispatchAsync(dispatch);
 }
+//Get data from server and dispatch into redux store
 
 export const selectProductLoading = (state: any) => {
     return state.product.isLoading;

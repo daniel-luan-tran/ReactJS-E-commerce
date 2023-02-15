@@ -1,8 +1,9 @@
 {
-  "homepage": "https://daniel-luan-tran.github.io/",
+  "homepage": "https://luan-react-ecommerce.netlify.app/",
   "name": "crwn-clothing",
   "version": "0.1.0",
   "private": true,
+  "license": "ISC",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
@@ -19,6 +20,7 @@
     "antd": "^5.1.2",
     "babel-plugin-macros": "^3.1.0",
     "bootstrap": "^5.1.3",
+    "cypress": "^12.5.1",
     "firebase": "^9.8.4",
     "gh-pages": "^4.0.0",
     "jquery": "^3.6.1",
@@ -60,7 +62,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cy:run": "cypress run",
+    "cypress:open": "cypress open"
   },
   "eslintConfig": {
     "extends": [
