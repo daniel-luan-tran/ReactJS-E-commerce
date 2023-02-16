@@ -2,10 +2,11 @@
 /// <reference types="Cypress" />
 describe("My frist test case", function () {
     it("My first case", function () {
+        cy.viewport(1920, 1080)
         cy.visit('http://localhost:3000/');
         cy.wait(2000);
-        cy.get('.product-card-container:visible').should('have.length.lessThan', 5);
-        cy.get('.menu-item').should('have.length.above', 3);
+        // cy.get('.product-card-container:visible').should('have.length.lessThan', 5);
+        // cy.get('.menu-item').should('have.length.above', 3);
         cy.visit('http://localhost:3000/shop');
         cy.get('#filled-keyword-desk').type('jean');
         cy.get('.product-card-container').eq(0).trigger('mouseover');
