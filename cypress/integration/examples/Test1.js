@@ -8,7 +8,14 @@ describe("My frist test case", function () {
         // cy.get('.product-card-container:visible').should('have.length.lessThan', 5);
         // cy.get('.menu-item').should('have.length.above', 3);
         cy.visit('http://localhost:3000/shop');
+        
+
         cy.get('#filled-keyword-desk').type('jean');
+        const $element = Cypress.$('.product-card-container');
+        cy.wrap($element).each(($ele, index, $list) => {
+            cy.wrap($ele.find('button')).click();
+        });
+
         cy.get('.product-card-container').eq(0).trigger('mouseover');
         cy.get('.product-card-container').eq(0).find('.button-container').should('be.visible');
         cy.get('.product-card-container').eq(0).find('button').contains('Add cart').click({force: true});
